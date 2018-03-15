@@ -9,8 +9,39 @@ body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  text-rendering: optimizeLegibility; //当绘制文本时，浏览器会侧重文本的可读性（清晰度），而不是渲染速度和几何 精度。该属性值可以用于字距调整和连字。
+  //font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+
+  font: normal 14px/1 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', STHeiti, SimSun, Arial, sans-serif;
+  background-color: $main-page-bg;
+  color: $main-font-color;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 label {
@@ -24,6 +55,8 @@ html {
 
 #app{
   height: 100%;
+  background-color: $main-page-bg;
+  color: $main-font-color;
 }
 
 *,
@@ -33,7 +66,7 @@ html {
 }
 
 .no-padding {
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
 .padding-content {

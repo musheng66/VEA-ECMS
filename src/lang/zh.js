@@ -48,6 +48,9 @@ export default {
     clipboardDemo: 'Clipboard',
     i18n: '国际化'
   },
+  siteInfo: {
+    copyright: '北京壹人壹本信息科技有限公司·北京研发中心 @ 2018年 3月'
+  },
   navbar: {
     logOut: '退出登录',
     dashboard: '首页',
@@ -56,13 +59,10 @@ export default {
     theme: '换肤'
   },
   login: {
-    title: '系统登录',
-    logIn: '登录',
-    username: '账号',
-    password: '密码',
-    any: '随便填',
-    thirdparty: '第三方登录',
-    thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
+    title: '壹人壹本·IMS',
+    logIn: '登 录',
+    usernamePlaceholder: '请输入用户名',
+    passwordPlaceholder: '请输入密码',
   },
   documentation: {
     documentation: '文档',

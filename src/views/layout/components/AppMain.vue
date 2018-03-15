@@ -21,3 +21,10 @@ export default {
   }
 }
 </script>
+<style rel="stylesheet/scss" lang="scss">
+  @import "../../../styles/variables";
+
+  section.app-main {
+    padding: $appmain-padding;
+  }
+</style>
