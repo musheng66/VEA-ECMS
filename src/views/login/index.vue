@@ -155,7 +155,7 @@ export default {
       margin: 0 auto;
       background-color: rgba(255, 255, 255, 0.5);
       border-radius: 10px;
-      box-shadow: 1px 1px 5px #444;
+      box-shadow: 1px 1px 5px #777;
 
       .svg-container {
         padding: 6px 5px 6px 15px;
@@ -172,7 +172,7 @@ export default {
         .title {
           margin: 15px auto 30px auto;
           text-align: center;
-          color: $light_gray;
+          color: #333;
         }
       }
       .show-pwd {

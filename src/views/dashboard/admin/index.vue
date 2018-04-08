@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-editor-container">
-
+    <h1>Welcome professor！</h1>
   </div>
 </template>
 

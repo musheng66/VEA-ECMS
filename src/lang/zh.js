@@ -1,52 +1,29 @@
 export default {
   route: {
     dashboard: '首页',
-    introduction: '简述',
-    documentation: '文档',
+
     permission: '权限测试页',
     icons: '图标',
-    components: '组件',
-    componentIndex: '介绍',
-    tinymce: '富文本编辑器',
-    markdown: 'Markdown',
-    jsonEditor: 'JSON编辑器',
-    dndList: '列表拖拽',
-    splitPane: 'Splitpane',
-    avatarUpload: '头像上传',
-    dropzone: 'Dropzone',
-    sticky: 'Sticky',
-    countTo: 'CountTo',
-    componentMixin: '小组件',
-    backToTop: '返回顶部',
-    charts: '图表',
-    keyboardChart: '键盘图表',
-    lineChart: '折线图',
-    mixChart: '混合图表',
-    example: '综合实例',
-    Table: 'Table',
-    dynamicTable: '动态Table',
-    dragTable: '拖拽Table',
-    inlineEditTable: 'Table内编辑',
-    complexTable: '综合Table',
-    treeTable: '树形表格',
-    customTreeTable: '自定义树表',
-    tab: 'Tab',
-    form: '表单',
-    createForm: '创建表单',
-    editForm: '编辑表单',
     errorPages: '错误页面',
     page401: '401',
     page404: '404',
     errorLog: '错误日志',
-    excel: 'Excel',
-    exportExcel: 'Export Excel',
-    selectExcel: 'Export Selected',
-    uploadExcel: 'Upload Excel',
-    zip: 'Zip',
-    exportZip: 'Export Zip',
-    theme: '换肤',
-    clipboardDemo: 'Clipboard',
-    i18n: '国际化'
+
+    lines1000: {
+      root: '千行代码统计',
+      repository: {
+        root: '代码库',
+        list: '列表',
+        add: '新增',
+        edit: '编辑',
+      },
+      person: {
+        root: '人员',
+        list: '列表',
+        add: '新增',
+        edit: '编辑',
+      }
+    }
   },
   siteInfo: {
     copyright: '北京壹人壹本信息科技有限公司·北京研发中心 @ 2018年 3月'
@@ -59,7 +36,7 @@ export default {
     theme: '换肤'
   },
   login: {
-    title: '壹人壹本·IMS',
+    title: '壹人壹本·ECMS',
     logIn: '登 录',
     usernamePlaceholder: '请输入用户名',
     passwordPlaceholder: '请输入密码',

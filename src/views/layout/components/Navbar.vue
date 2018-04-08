@@ -13,10 +13,6 @@
 
       <lang-select class="international right-menu-item"></lang-select>
 
-      <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
-        <theme-picker class="theme-switch right-menu-item"></theme-picker>
-      </el-tooltip>
-
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
@@ -28,7 +24,7 @@
               {{$t('navbar.dashboard')}}
             </el-dropdown-item>
           </router-link>
-          <a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
+          <a target='_blank' href="https://github.com/musheng66/VEA-ECMS">
             <el-dropdown-item>
               {{$t('navbar.github')}}
             </el-dropdown-item>
@@ -49,7 +45,6 @@ import Hamburger from '@/components/Hamburger'
 import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import LangSelect from '@/components/LangSelect'
-import ThemePicker from '@/components/ThemePicker'
 
 export default {
   components: {
@@ -57,8 +52,7 @@ export default {
     Hamburger,
     ErrorLog,
     Screenfull,
-    LangSelect,
-    ThemePicker
+    LangSelect
   },
   computed: {
     ...mapGetters([

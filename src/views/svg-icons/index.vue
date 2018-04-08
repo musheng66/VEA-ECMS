@@ -50,7 +50,6 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .icons-container {
-  margin: 10px 20px 0;
   overflow: hidden;
   .icons-wrapper {
     margin: 0 auto;

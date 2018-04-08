@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main" style="min-height: 100%">
+  <section class="app-main">
     <transition name="fade" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view></router-view>
@@ -26,5 +26,8 @@ export default {
 
   section.app-main {
     padding: $appmain-padding;
+    height: calc(100vh - #{$navbar-height});
+    overflow: auto;
+    overflow-x: hidden;
   }
 </style>

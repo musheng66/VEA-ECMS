@@ -29,3 +29,8 @@ export default {
   }
 }
 </script>
+<style rel="stylesheet/scss" lang="scss">
+  .dashboard-container {
+    height: 100%;
+  }
+</style>

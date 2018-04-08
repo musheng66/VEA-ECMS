@@ -60,6 +60,7 @@ export default new Router({
 export const asyncRouterMap = [
   {
     path: '/permission',
+    hidden: true,
     component: Layout,
     redirect: '/permission/index',
     meta: { roles: ['admin'] }, // you can set roles in root nav
@@ -76,6 +77,102 @@ export const asyncRouterMap = [
   },
 
   {
+    path: '/lines1000',
+    name: 'lines1000',
+    component: Layout,
+    redirect: 'noredirect',
+    meta: {
+      icon: 'check',
+      title: 'lines1000.root',
+      roles: ['admin']
+    }, // you can set roles in root nav
+    children: [
+      {
+        path: '/lines1000/repository',
+        name: 'repository',
+        component: _import('lines1000/index'),
+        redirect: '/lines1000/repository/list',
+        meta: {
+          icon: 'code',
+          title: 'lines1000.repository.root',
+          roles: ['admin']
+        }, // you can set roles in root nav
+        children: [
+          {
+            path: 'list',
+            name: 'list',
+            component: _import('lines1000/repository/list'),
+            alwaysShow: true,
+            meta: {
+              title: 'lines1000.repository.list',
+              icon: 'table',
+              roles: ['admin'] // or you can only set roles in sub nav
+            },
+          },
+          {
+            path: 'add',
+            name: 'add',
+            hidden: true,
+            component: _import('lines1000/repository/view'),
+            meta: {
+              title: 'lines1000.repository.add',
+              icon: 'form',
+              roles: ['admin'] // or you can only set roles in sub nav
+            }
+          },
+          {
+            path: 'edit/:id',
+            name: 'edit',
+            hidden: true,
+            component: _import('lines1000/repository/view'),
+            meta: {
+              isEdit: true, // set edit, so we can judge it on 'view' component
+              title: 'lines1000.repository.edit',
+              icon: 'form',
+              roles: ['admin'] // or you can only set roles in sub nav
+            }
+          },
+        ]
+      },
+
+      {
+        path: 'personList',
+        name: 'personList',
+        component: _import('lines1000/person/list'),
+        meta: {
+          title: 'lines1000.person.root',
+          icon: 'peoples',
+          roles: ['admin'] // or you can only set roles in sub nav
+        },
+      },
+      {
+        path: 'personAdd',
+        name: 'personAdd',
+        hidden: true,
+        component: _import('lines1000/person/view'),
+        meta: {
+          title: 'lines1000.person.add',
+          roles: ['admin'] // or you can only set roles in sub nav
+        }
+      },
+      {
+        path: 'personEdit/:id',
+        name: 'personEdit',
+        hidden: true,
+        component: _import('lines1000/person/view'),
+        meta: {
+          isEdit: true, // set edit, so we can judge it on 'view' component
+          title: 'lines1000.repository.edit',
+          roles: ['admin'] // or you can only set roles in sub nav
+        }
+      },
+
+    ]
+
+
+  },
+
+  {
     path: '/icon',
     component: Layout,
     children: [{
@@ -88,6 +185,7 @@ export const asyncRouterMap = [
 
   {
     path: '/error',
+    hidden: true,
     component: Layout,
     redirect: 'noredirect',
     name: 'errorPages',

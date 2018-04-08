@@ -37,8 +37,7 @@ export default {
 
   .page-error {
     text-align: center;
-    /* height: calc(100vh - #{$navbar-height} - #{$appmain-padding} - #{$appmain-padding});*/
-    height: 100vh;
+    height: 100%;
     @include flex();
     @include flex-direction(column);
     @include justify-content();
