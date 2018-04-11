@@ -5,9 +5,10 @@ import errorLog from './modules/errorLog'
 import permission from './modules/permission'
 import tagsView from './modules/tagsView'
 import user from './modules/user'
+import lines1000 from './modules/lines1000'
 import getters from './getters'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
@@ -15,9 +16,10 @@ const store = new Vuex.Store({
     errorLog,
     permission,
     tagsView,
-    user
+    user,
+    lines1000
   },
   getters
-})
+});
 
 export default store

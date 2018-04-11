@@ -35,8 +35,8 @@
             label="当前状态"
             width="">
             <template slot-scope="scope">
-              <span v-if="scope.row.status == 1 || scope.row.status == '1'" style="color: green;">使用中</span>
-              <span v-if="scope.row.status == 2 || scope.row.status == '2'" style="color: red;">已删除</span>
+              <span v-if="scope.row.status === 1 || scope.row.status === '1'" style="color: green;">使用中</span>
+              <span v-if="scope.row.status === 2 || scope.row.status === '2'" style="color: red;">已删除</span>
             </template>
           </el-table-column>
           <el-table-column
@@ -69,7 +69,7 @@
   export default {
     name: 'PersonList',
 
-    data () {
+    data() {
       return {
         tableData: [],
         params: {
@@ -83,15 +83,12 @@
 
     computed: {},
 
-    created () {
-
+    created() {
       scrollTop();
-
       this.getPersonList();
-
     },
 
-    mounted () {
+    mounted() {
 
     },
 
@@ -119,9 +116,9 @@
       },
 
       getPersonList() {
-        let that = this;
+        const that = this;
         that.loading = true;
-        getProOperallUserList(that.params).then(function (res) {
+        getProOperallUserList(that.params).then(function(res) {
           try {
             that.tableData = res.data.result.listarr;
             that.params.total = Number(res.data.result.count);
@@ -129,8 +126,10 @@
             console.log(e);
           }
           that.loading = false;
+        }).catch((error) => {
+          console.log(error);
+          that.loading = false;
         });
-
       },
 
       handleCurrentChange(val) {
@@ -143,10 +142,8 @@
         switch (row.status) {
           case '1' || 1:
             return '使用中';
-            break;
           case '2' || 2:
             return '已删除';
-            break;
           default:
             return '';
         }
@@ -157,10 +154,8 @@
         switch (row.status) {
           case '1' || 1:
             return 'color: green;';
-            break;
           case '2' || 2:
             return 'color: red;';
-            break;
           default:
             return '';
         }
@@ -168,14 +163,14 @@
 
       // 删除
       handleDelete(row) {
-        let that = this;
+        const that = this;
         that.$confirm('此操作将删除该人员, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          delProOperallUser({ id: row.id }).then(function (res) {
-            if (res.data && res.data.status == 200) {
+          delProOperallUser({ id: row.id }).then(function(res) {
+            if (res.data && res.data.status === 200) {
               that.$message({
                 type: 'success',
                 message: '删除成功!'
@@ -183,9 +178,7 @@
               that.getPersonList();
             }
           });
-        }).catch(() => {
-
-        });
+        }).catch(() => { });
       },
 
     },

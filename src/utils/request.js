@@ -1,10 +1,18 @@
 import axios from 'axios'
+import Qs from 'qs'
 import { Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
+  // config里面有这个transformRequest，这个选项会在发送参数前进行处理。这时候我们通过Qs.stringify转换为表单查询参数
+  transformRequest: [function(data) {
+    data = Qs.stringify(data);
+    return data;
+  }],
+  // 设置Content-Type
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 5000 // request timeout
 })
@@ -26,6 +34,8 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(
   // response => response,
   response => {
+    console.log('response from: ' + response.config.url);
+    console.log(response);
     if (response.data.monitor) {  // 为本地登录模拟单独设置
       return response;
     } else {

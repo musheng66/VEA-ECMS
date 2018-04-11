@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-let serverUrl = 'http://lines1000apinew.eben.cn';
+const serverUrl = 'http://lines1000apinew.eben.cn';
 
 // ### 代码库列表
 // POST
@@ -8,11 +8,11 @@ let serverUrl = 'http://lines1000apinew.eben.cn';
 // pro_id		■■■ 项目id
 // page		  ■■■ 页码
 // page_num	■■■ 每页项目数
-export function repositoryQuery(param) {
+export function repositoryQuery(data) {
   return request({
     url: serverUrl + '/manage/getProList',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -20,11 +20,11 @@ export function repositoryQuery(param) {
 // POST
 // **params**
 // id		    ■■■ 项目id
-export function repositoryDelete(param) {
+export function repositoryDelete(data) {
   return request({
     url: serverUrl + '/manage/delPro',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -33,11 +33,11 @@ export function repositoryDelete(param) {
 // **params**
 // url		    ■■■ svn或git地址
 // urltype		■■■ 1代表svn，2代表git
-export function repositoryAdd(param) {
+export function repositoryAdd(data) {
   return request({
     url: serverUrl + '/manage/addPro',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -48,11 +48,11 @@ export function repositoryAdd(param) {
 // urltype		■■■ 1代表svn，2代表git
 // name		    ■■■ 项目名称
 // id		      ■■■ 项目id
-export function repositoryEdit(param) {
+export function repositoryEdit(data) {
   return request({
     url: serverUrl + '/manage/updPro',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -63,11 +63,11 @@ export function repositoryEdit(param) {
 // page		    ■■■ 页码
 // page_num	  ■■■ 每页项目数
 // oper_uname	■■■ 作者id名字
-export function getProOperallUserList(param) {
+export function getProOperallUserList(data) {
   return request({
     url: serverUrl + '/manage/getProOperallUserList',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -75,11 +75,11 @@ export function getProOperallUserList(param) {
 // POST
 // **params**
 // id		■■■ 作者id
-export function delProOperallUser(param) {
+export function delProOperallUser(data) {
   return request({
     url: serverUrl + '/manage/delProOperallUser',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -89,11 +89,11 @@ export function delProOperallUser(param) {
 // aliasname	■■■ 作者别名
 // cnname		  ■■■ 作者中文名
 // oper_uname	■■■ 作者名称
-export function addProOperallUser(param) {
+export function addProOperallUser(data) {
   return request({
     url: serverUrl + '/manage/addProOperallUser',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -104,11 +104,11 @@ export function addProOperallUser(param) {
 // aliasname	■■■ 作者别名
 // cnname		  ■■■ 作者中文名
 // oper_uname	■■■ 作者名称
-export function updProOperallUser(param) {
+export function updProOperallUser(data) {
   return request({
     url: serverUrl + '/manage/updProOperallUser',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -118,11 +118,11 @@ export function updProOperallUser(param) {
 // name		■■■ 开发用名
 // type		■■■ add： 增加人员 upd： 更新人员
 // uid		■■■ 人员id
-export function ccPouName(param) {
+export function ccPouName(data) {
   return request({
     url: serverUrl + '/manage/cc_api_pou_name',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -132,11 +132,11 @@ export function ccPouName(param) {
 // aliasname	■■■ 开发用别名
 // type		    ■■■ add： 增加人员 upd： 更新人员
 // uid		    ■■■ 人员id
-export function ccPouAliasname(param) {
+export function ccPouAliasname(data) {
   return request({
     url: serverUrl + '/manage/cc_api_pou_aliasname',
     method: 'post',
-    param
+    data
   })
 }
 
@@ -146,10 +146,10 @@ export function ccPouAliasname(param) {
 // cnname		■■■ 人员名（中文名）
 // type		  ■■■ add： 增加时判重 upd： 更新时判重
 // uid		  ■■■ 人员id
-export function ccPouCnname(param) {
+export function ccPouCnname(data) {
   return request({
     url: serverUrl + '/manage/cc_api_pou_cnname',
     method: 'post',
-    param
+    data
   })
 }

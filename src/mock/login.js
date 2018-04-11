@@ -1,4 +1,5 @@
 import { param2Obj } from '@/utils'
+import { requestParamsToJSON } from '@/utils/ebenUtils'
 
 const userMap = {
   admin: {
@@ -17,20 +18,20 @@ const userMap = {
     name: '编辑人员',
     monitor: true,
   }
-}
+};
 
 export default {
   loginByUsername: config => {
-    const { username } = JSON.parse(config.body)
-    return userMap[username]
+    const params = requestParamsToJSON(config.body);
+    return userMap[params.username]
   },
   getUserInfo: config => {
-    const { token } = param2Obj(config.url)
+    const { token } = param2Obj(config.url);
     if (userMap[token]) {
       return userMap[token]
     } else {
       return false
     }
   },
-  logout: () => 'success'
+  logout: () => { return { status: 200 }; }
 }
