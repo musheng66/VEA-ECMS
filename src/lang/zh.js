@@ -13,13 +13,13 @@ export default {
       root: '千行代码统计',
       repository: {
         root: '代码库管理',
-        list: '代码库',
+        list: '列表',
         add: '新增',
         edit: '编辑',
       },
       person: {
         root: '人员管理',
-        list: '人员',
+        list: '列表',
         add: '新增',
         edit: '编辑',
       }

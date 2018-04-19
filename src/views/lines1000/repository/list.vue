@@ -2,7 +2,7 @@
   <div class="list">
     <section class="page">
       <div class="func-area">
-        <el-button type="primary" class="" @click="addRepository()">新增代码库</el-button>
+        <el-button type="primary" class="" @click="addRepositoryPage()">新增代码库</el-button>
       </div>
       <div class="table-area">
         <el-table
@@ -42,7 +42,7 @@
             label="操作"
             width="125">
             <template slot-scope="scope">
-              <el-button @click="handleEdit(scope.row)" type="primary" size="small" icon="el-icon-edit"></el-button>
+              <el-button @click="editRepositoryPage(scope.row)" type="primary" size="small" icon="el-icon-edit"></el-button>
               <el-button @click="handleDelete(scope.row)" type="danger" size="small" icon="el-icon-delete"></el-button>
             </template>
           </el-table-column>
@@ -154,6 +154,14 @@
     },
 
     methods: {
+
+      addRepositoryPage() {
+        this.$router.push('/lines1000/repository/add');
+      },
+      editRepositoryPage(row) {
+        this.$router.push('/lines1000/person/edit/' + row.id);
+      },
+
       // 新增
       addRepository() {
         this.dialogFormVisible = true;
