@@ -15,5 +15,7 @@ Mock.mock(/\/user\/info\.*/, 'get', loginAPI.getUserInfo);
 // 代码库管理
 Mock.mock('http://lines1000apinew.eben.cn/manage/getProList', 'post', lines1000API.repositoryQuery);
 
+// 人员管理
+Mock.mock('http://lines1000apinew.eben.cn/manage/getProOperallUserList', 'post', lines1000API.getProOperallUserList);
 
 export default Mock;

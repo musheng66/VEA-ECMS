@@ -19,6 +19,37 @@ const repositoryList = {
   }
 };
 
+const personList = {
+  1: {
+    id: 1,
+    name: 'testa',
+    aliasname: null,
+    status: 1,
+    cnname: '测试a',
+  },
+  2: {
+    id: 2,
+    name: 'testb',
+    aliasname: '',
+    status: 2,
+    cnname: '测试b',
+  },
+  3: {
+    id: 3,
+    name: 'testc',
+    aliasname: null,
+    status: 1,
+    cnname: '测试c',
+  },
+  4: {
+    id: 4,
+    name: 'testd',
+    aliasname: 'testedd',
+    status: 1,
+    cnname: '测试d',
+  }
+};
+
 export default {
   repositoryQuery: config => {
     const params = requestParamsToJSON(config.body);
@@ -33,6 +64,29 @@ export default {
     } else {
       listarr.push(repositoryList['1']);
       listarr.push(repositoryList['2']);
+    }
+    returnData.result = {
+      count: listarr.length,
+      listarr: listarr
+    };
+    return returnData;
+  },
+
+  getProOperallUserList: config => {
+    const params = requestParamsToJSON(config.body);
+    const returnData = {
+      status: 200,
+      message: '查询成功',
+      result: {}
+    };
+    const listarr = [];
+    if (params && params.id && String(params.id) !== '') {
+      listarr.push(personList[params.id]);
+    } else {
+      listarr.push(personList['1']);
+      listarr.push(personList['2']);
+      listarr.push(personList['3']);
+      listarr.push(personList['4']);
     }
     returnData.result = {
       count: listarr.length,

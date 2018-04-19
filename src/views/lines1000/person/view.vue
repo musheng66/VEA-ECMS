@@ -27,7 +27,7 @@
   import { repositoryQuery, repositoryAdd, repositoryEdit } from '@/api/lines1000'
 
   export default{
-    name: 'RepositoryView',
+    name: 'PersonView',
 
     data () {
       let checkcnname = (rule, value, callback) => {
@@ -93,7 +93,6 @@
         }
       };
       return {
-        loginInfo: $auth.getLoginInfo(),
         ruleForm: {
           cnname: '',
           oper_uname: '',

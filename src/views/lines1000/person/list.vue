@@ -107,12 +107,12 @@
     methods: {
 
       addPerson() {
-        this.$router.push('/lines1000/personAdd');
+        this.$router.push('/lines1000/person/add');
       },
 
       // 编辑
       handleEdit(row) {
-        this.$router.push('/lines1000/personEdit/' + row.id);
+        this.$router.push('/lines1000/person/edit/' + row.id);
       },
 
       getPersonList() {
