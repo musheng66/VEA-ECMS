@@ -30,7 +30,6 @@
 
 <script>
   import { scrollTop } from '@/utils/ebenUtils'
-  import { repositoryQuery, repositoryAdd, repositoryEdit } from '@/api/lines1000'
 
   export default{
     name: 'RepositoryView',
@@ -113,9 +112,9 @@
           if (valid) {
             let res;
             if (that.isEdit) {
-              res = repositoryEdit(that.ruleForm);
+              res = that.$store.dispatch('AddRepository', that.ruleForm);
             } else {
-              res = repositoryAdd(that.ruleForm);
+              res = that.$store.dispatch('EditRepository', that.ruleForm);
             }
             res.then(function (res) {
               that.fullscreenLoading = false;
@@ -123,7 +122,7 @@
                 that.$alert('操作成功，点击确定返回列表页', '提示信息', {
                   confirmButtonText: '确定',
                   callback: (action) => {
-                    that.$router.push('/lines1000/repositoryList');
+                    that.$router.push('/lines1000/repository/list');
                   }
                 });
               }
@@ -157,7 +156,7 @@
       getRepository() {
         let that = this;
         that.fullscreenLoading = true;
-        repositoryQuery({ page: 1, page_num: 10, pro_id: that.pro_id }).then(function (res) {
+        that.$store.dispatch('GetRepository', { page: 1, page_num: 10, pro_id: that.pro_id }).then(function (res) {
           that.fullscreenLoading = false;
           if (res.data && res.data.status == 200) {
             if (res.data.result.count != 0) {
@@ -165,7 +164,7 @@
                 id: res.data.result.listarr[0].id,
                 name: res.data.result.listarr[0].name,
                 url: res.data.result.listarr[0].url,
-                urltype: res.data.result.listarr[0].urltype
+                urltype: String(res.data.result.listarr[0].urltype)
               };
               that.ruleForm.urlbranch = res.data.result.listarr[0].urlbranch ? res.data.result.listarr[0].urlbranch : '';
               // 保存一份原始数据以备重置
@@ -173,7 +172,7 @@
                 id: res.data.result.listarr[0].id,
                 name: res.data.result.listarr[0].name,
                 url: res.data.result.listarr[0].url,
-                urltype: res.data.result.listarr[0].urltype
+                urltype: String(res.data.result.listarr[0].urltype)
               };
               that.orginData.urlbranch = res.data.result.listarr[0].urlbranch ? res.data.result.listarr[0].urlbranch : '';
               that.onSelectChange(res.data.result.listarr[0].urlbranch);

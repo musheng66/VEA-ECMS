@@ -159,7 +159,7 @@
         this.$router.push('/lines1000/repository/add');
       },
       editRepositoryPage(row) {
-        this.$router.push('/lines1000/person/edit/' + row.id);
+        this.$router.push('/lines1000/repository/edit/' + row.id);
       },
 
       // 新增
@@ -174,9 +174,9 @@
           if (valid) {
             let res;
             if (that.isEdit) {
-              res = repositoryEdit(that.ruleForm);
+              res = that.$store.dispatch('AddRepository', that.ruleForm);
             } else {
-              res = repositoryAdd(that.ruleForm);
+              res = that.$store.dispatch('EditRepository', that.ruleForm);
             }
             res.then(function(res) {
               that.fullscreenLoading = false;
