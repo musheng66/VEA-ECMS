@@ -56,36 +56,11 @@
         </el-pagination>
       </div>
     </section>
-
-    <el-dialog title="代码库" :visible.sync="dialogFormVisible">
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" v-loading.fullscreen.lock="fullscreenLoading">
-        <el-form-item label="项目名称" prop="name">
-          <el-input v-model="ruleForm.name"></el-input>
-        </el-form-item>
-        <el-form-item label="代码库类型" prop="urltype">
-          <el-select v-model="ruleForm.urltype" placeholder="请选择代码库类型" :disabled="disable" @change="onSelectChange">
-            <el-option label="svn" value="1"></el-option>
-            <el-option label="git" value="2"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="代码库地址" prop="url">
-          <el-input v-model="ruleForm.url" :disabled="disable"></el-input>
-        </el-form-item>
-        <el-form-item label="代码库分支" prop="urlbranch" v-if="selectEnable">
-          <el-input v-model="ruleForm.urlbranch" :disabled="disable"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="cancelSubmit('ruleForm')">取 消</el-button>
-        <el-button type="primary" @click="submitForm('ruleForm')">提 交</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 
 <script>
   import { scrollTop, dateConvert } from '@/utils/ebenUtils'
-  import { repositoryDelete, repositoryAdd, repositoryEdit } from '@/api/lines1000'
 
   export default {
     name: 'RepositoryList',
@@ -161,84 +136,11 @@
       editRepositoryPage(row) {
         this.$router.push('/lines1000/repository/edit/' + row.id);
       },
-
-      // 新增
-      addRepository() {
-        this.dialogFormVisible = true;
-      },
-      // 提交表单
-      submitForm(formName) {
-        const that = this;
-        that.fullscreenLoading = true;
-        that.$refs[formName].validate((valid) => {
-          if (valid) {
-            let res;
-            if (that.isEdit) {
-              res = that.$store.dispatch('AddRepository', that.ruleForm);
-            } else {
-              res = that.$store.dispatch('EditRepository', that.ruleForm);
-            }
-            res.then(function(res) {
-              that.fullscreenLoading = false;
-              if (res.data && res.data.status === 200) {
-                that.$message({
-                  message: '提交成功，请查看列表',
-                  type: 'success'
-                });
-                that.getRepository();
-              }
-            }, function(err) {
-              console.log('submit fail info:');
-              console.log(err);
-              that.fullscreenLoading = false;
-            });
-          } else {
-            that.fullscreenLoading = false;
-            return false;
-          }
-        });
-      },
-      // 选择代码库类型的回调
-      onSelectChange(val) {
-        if (val) this.selectEnable = (String(val) === '2');
-      },
-      // 取消提交
-      cancelSubmit(formName) {
-        this.dialogFormVisible = false;
-        this.isEdit = false;
-        this.disable = false;
-        this.$refs[formName].resetFields();
-        this.onSelectChange('');
-      },
-      // 编辑 - 根据id获取指定数据
-      handleEdit(row) {
-        const that = this;
-        that.fullscreenLoading = true;
-        that.$store.dispatch('GetRepository', { page: 1, page_num: 10, pro_id: row.id }).then(function(res) {
-          that.fullscreenLoading = false;
-          if (res.data && res.data.status === 200) {
-            if (res.data.result.count !== 0) {
-              that.ruleForm = {
-                id: res.data.result.listarr[0].id,
-                name: res.data.result.listarr[0].name,
-                url: res.data.result.listarr[0].url,
-                urltype: res.data.result.listarr[0].urltype
-              };
-              that.ruleForm.urlbranch = res.data.result.listarr[0].urlbranch ? res.data.result.listarr[0].urlbranch : '';
-              that.onSelectChange(res.data.result.listarr[0].urlbranch);
-            }
-          }
-        }).catch((err) => {
-          console.log('get repository by id fail info:')
-          console.log(err);
-          that.fullscreenLoading = false;
-        });
-      },
       // 获取列表
       getRepository() {
         const that = this;
         that.loading = true;
-        that.$store.dispatch('GetRepository', that.params).then(function(res) {
+        that.$store.dispatch('RepositoryQuery', that.params).then(function(res) {
           try {
             that.tableData = res.data.result.listarr;
             that.params.total = Number(res.data.result.count);
@@ -288,7 +190,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          repositoryDelete({ id: row.id }).then(function(res) {
+          that.$store.dispatch('RepositoryDelete', { id: row.id }).then(function(res) {
             if (res.data && res.data.status === 200) {
               that.$message({
                 type: 'success',

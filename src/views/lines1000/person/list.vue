@@ -64,7 +64,6 @@
 
 <script>
   import { scrollTop, dateConvert } from '@/utils/ebenUtils'
-  import { getProOperallUserList, delProOperallUser } from '@/api/lines1000'
 
   export default {
     name: 'PersonList',
@@ -118,7 +117,7 @@
       getPersonList() {
         const that = this;
         that.loading = true;
-        getProOperallUserList(that.params).then(function(res) {
+        that.$store.dispatch('GetProOperallUserList', that.params).then(function(res) {
           try {
             that.tableData = res.data.result.listarr;
             that.params.total = Number(res.data.result.count);
@@ -169,7 +168,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          delProOperallUser({ id: row.id }).then(function(res) {
+          that.$store.dispatch('DelProOperallUser', { id: row.id }).then(function(res) {
             if (res.data && res.data.status === 200) {
               that.$message({
                 type: 'success',

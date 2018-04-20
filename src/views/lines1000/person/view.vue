@@ -23,53 +23,50 @@
 </template>
 
 <script>
-  import { scrollTop } from '@/utils/ebenUtils'
-  import { repositoryQuery, repositoryAdd, repositoryEdit } from '@/api/lines1000'
+  import { scrollTop, replaceAll } from '@/utils/ebenUtils'
 
   export default{
     name: 'PersonView',
 
     data () {
       let checkcnname = (rule, value, callback) => {
-        let val = $utils.replaceAll(this.ruleForm.cnname, ' ', '');
+        let val = replaceAll(this.ruleForm.cnname, ' ', '');
         this.ruleForm.cnname = val;
         let params = {
           cnname: val,
           type: this.dotype
         };
         if (this.dotype == 'upd') params.uid = this.id;
-        let promise = $apis.lines1000.ccPouCnname(params);
-        promise.then(function (value) {
-          if (!value.valid || value.valid == 'false') {
-            callback(new Error(value.message));
+        this.$store.dispatch('CcPouCnname', params).then(function (res) {
+          if (!res.data.valid || res.data.valid == 'false') {
+            callback(new Error(res.data.message));
           } else {
             callback();
           }
         }, function (err) {
-          callback(new Error(err.statusText));
+          callback(new Error(err.message));
         });
       };
       let checkoperuname = (rule, value, callback) => {
-        let val = $utils.replaceAll(this.ruleForm.oper_uname, ' ', '');
+        let val = replaceAll(this.ruleForm.oper_uname, ' ', '');
         this.ruleForm.oper_uname = val;
         let params = {
           oper_uname: val,
           type: this.dotype
         };
         if (this.dotype == 'upd') params.uid = this.id;
-        let promise = $apis.lines1000.ccPouName(params);
-        promise.then(function (value) {
-          if (!value.valid || value.valid == 'false') {
-            callback(new Error(value.message));
+        this.$store.dispatch('CcPouName', params).then(function (res) {
+          if (!res.data.valid || res.data.valid == 'false') {
+            callback(new Error(res.data.message));
           } else {
             callback();
           }
         }, function (err) {
-          callback(new Error(err.statusText));
+          callback(new Error(err.message));
         });
       };
       let checkaliasname = (rule, value, callback) => {
-        let val = $utils.replaceAll(this.ruleForm.aliasname, ' ', '');
+        let val = replaceAll(this.ruleForm.aliasname, ' ', '');
         this.ruleForm.aliasname = val;
         let params = {
           aliasname: val,
@@ -80,15 +77,14 @@
         if (val == '') {
           callback();
         } else {
-          let promise = $apis.lines1000.ccPouAliasname(params);
-          promise.then(function (value) {
-            if (!value.valid || value.valid == 'false') {
-              callback(new Error(value.message));
+          this.$store.dispatch('CcPouAliasname', params).then(function (res) {
+            if (!res.data.valid || res.data.valid == 'false') {
+              callback(new Error(res.data.message));
             } else {
               callback();
             }
           }, function (err) {
-            callback(new Error(err.statusText));
+            callback(new Error(err.message));
           });
         }
       };
@@ -169,37 +165,29 @@
           if (valid) {
             let res;
             if (that.isEdit) {
-              res = $apis.lines1000.updProOperallUser(that.ruleForm);
+              res = this.$store.dispatch('UpdProOperallUser', that.ruleForm);
             } else {
-              res = $apis.lines1000.addProOperallUser(that.ruleForm);
+              res = this.$store.dispatch('AddProOperallUser', that.ruleForm);
             }
             res.then(function (value) {
               that.fullscreenLoading = false;
               if (value && value.status == 200) {
                 that.$alert('操作成功，点击确定返回列表页', '提示信息', {
-                    confirmButtonText: '确定',
-                    callback: (action) => {
-                    that.$router.push('/personManage/personList');
-              }
-              });
-              } else {
-                that.$message({
-                  type: 'error',
-                  message: value.message
+                  confirmButtonText: '确定',
+                  callback: (action) => {
+                    that.$router.push('/lines1000/person/list');
+                  }
                 });
               }
             }, function (err) {
               that.fullscreenLoading = false;
-              that.$message({
-                type: 'error',
-                message: err.statusText
-              });
+              console.log('Person Submit fail: ' + err);
             });
           } else {
             that.fullscreenLoading = false;
-        return false;
-      }
-      });
+            return false;
+          }
+        });
       },
 
       resetForm(formName) {
@@ -208,49 +196,34 @@
         } else {
           this.$refs[formName].resetFields();
         }
-
       },
 
       // 获取人员数据
       getPerson() {
         let that = this;
         that.fullscreenLoading = true;
-        let res = $apis.lines1000.getProOperallUserList({ page: 1, page_num: 10, id: that.id });
-        res.then(function (value) {
+        that.$store.dispatch('GetProOperallUserList', { page: 1, page_num: 10, id: that.id }).then(function (res) {
           that.fullscreenLoading = false;
-          if (value && value.status == 200) {
-            if (value.result.count != 0) {
+          if (res.data && res.data.status == 200) {
+            if (res.data.result.count != 0) {
               that.ruleForm = {
-                id: value.result.listarr[0].id,
-                oper_uname: value.result.listarr[0].name,
-                aliasname: value.result.listarr[0].aliasname,
-                cnname: value.result.listarr[0].cnname
+                id: res.data.result.listarr[0].id,
+                oper_uname: res.data.result.listarr[0].name,
+                aliasname: res.data.result.listarr[0].aliasname,
+                cnname: res.data.result.listarr[0].cnname
               };
               // 保存一份原始数据以备重置
               that.orginData = {
-                id: value.result.listarr[0].id,
-                oper_uname: value.result.listarr[0].name,
-                aliasname: value.result.listarr[0].aliasname,
-                cnname: value.result.listarr[0].cnname
+                id: res.data.result.listarr[0].id,
+                oper_uname: res.data.result.listarr[0].name,
+                aliasname: res.data.result.listarr[0].aliasname,
+                cnname: res.data.result.listarr[0].cnname
               };
-            } else {
-              that.$message({
-                type: 'error',
-                message: '未获取到数据'
-              });
             }
-          } else {
-            that.$message({
-              type: 'error',
-              message: value.message
-            });
           }
         }, function (err) {
           that.fullscreenLoading = false;
-          that.$message({
-            type: 'error',
-            message: err.statusText
-          });
+          console.log('getPerson fail: ' + err);
         });
       },
 

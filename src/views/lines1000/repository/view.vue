@@ -112,9 +112,9 @@
           if (valid) {
             let res;
             if (that.isEdit) {
-              res = that.$store.dispatch('AddRepository', that.ruleForm);
+              res = that.$store.dispatch('RepositoryEdit', that.ruleForm);
             } else {
-              res = that.$store.dispatch('EditRepository', that.ruleForm);
+              res = that.$store.dispatch('RepositoryAdd', that.ruleForm);
             }
             res.then(function (res) {
               that.fullscreenLoading = false;
@@ -128,6 +128,7 @@
               }
             }, function (err) {
               that.fullscreenLoading = false;
+              console.log('Repository Submit fail: ' + err);
             });
           } else {
             that.fullscreenLoading = false;
@@ -156,7 +157,7 @@
       getRepository() {
         let that = this;
         that.fullscreenLoading = true;
-        that.$store.dispatch('GetRepository', { page: 1, page_num: 10, pro_id: that.pro_id }).then(function (res) {
+        that.$store.dispatch('RepositoryQuery', { page: 1, page_num: 10, pro_id: that.pro_id }).then(function (res) {
           that.fullscreenLoading = false;
           if (res.data && res.data.status == 200) {
             if (res.data.result.count != 0) {
@@ -180,6 +181,7 @@
           }
         }, function (err) {
           that.fullscreenLoading = false;
+          console.log('getRepository fail: ' + err);
         });
       },
 

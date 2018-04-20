@@ -7,7 +7,7 @@ const repositoryList = {
     urltype: 1,
     urlbranch: '',
     addtime: 1523382271,
-    name: 'aaa项目'
+    name: '测试数据aaa项目'
   },
   2: {
     id: 2,
@@ -15,7 +15,7 @@ const repositoryList = {
     urltype: 2,
     urlbranch: 'master',
     addtime: 1523332271,
-    name: 'bbb项目'
+    name: '测试数据bbb项目'
   }
 };
 
@@ -25,32 +25,33 @@ const personList = {
     name: 'testa',
     aliasname: null,
     status: 1,
-    cnname: '测试a',
+    cnname: '测试数据a',
   },
   2: {
     id: 2,
     name: 'testb',
     aliasname: '',
     status: 2,
-    cnname: '测试b',
+    cnname: '测试数据b',
   },
   3: {
     id: 3,
     name: 'testc',
     aliasname: null,
     status: 1,
-    cnname: '测试c',
+    cnname: '测试数据c',
   },
   4: {
     id: 4,
     name: 'testd',
     aliasname: 'testedd',
     status: 1,
-    cnname: '测试d',
+    cnname: '测试数据d',
   }
 };
 
 export default {
+  // 模拟代码库接口
   repositoryQuery: config => {
     const params = requestParamsToJSON(config.body);
     const returnData = {
@@ -71,7 +72,32 @@ export default {
     };
     return returnData;
   },
+  repositoryAdd: config => {
+    const params = requestParamsToJSON(config.body);
+    return {
+      status: 200,
+      message: '模拟新增成功',
+      received: params
+    };
+  },
+  repositoryEdit: config => {
+    const params = requestParamsToJSON(config.body);
+    return {
+      status: 200,
+      message: '模拟编辑成功',
+      received: params
+    };
+  },
+  repositoryDelete: config => {
+    const params = requestParamsToJSON(config.body);
+    return {
+      status: 200,
+      message: '模拟删除成功',
+      received: params
+    };
+  },
 
+  // 模拟人员接口
   getProOperallUserList: config => {
     const params = requestParamsToJSON(config.body);
     const returnData = {
@@ -94,4 +120,29 @@ export default {
     };
     return returnData;
   },
+  addProOperallUser: config => {
+    const params = requestParamsToJSON(config.body);
+    return {
+      status: 200,
+      message: '模拟新增成功',
+      received: params
+    };
+  },
+  updProOperallUser: config => {
+    const params = requestParamsToJSON(config.body);
+    return {
+      status: 200,
+      message: '模拟编辑成功',
+      received: params
+    };
+  },
+  delProOperallUser: config => {
+    const params = requestParamsToJSON(config.body);
+    return {
+      status: 200,
+      message: '模拟删除成功',
+      received: params
+    };
+  },
+
 }

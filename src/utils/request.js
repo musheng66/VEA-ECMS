@@ -15,7 +15,7 @@ const service = axios.create({
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 5000 // request timeout
-})
+});
 
 // request interceptor
 service.interceptors.request.use(config => {
@@ -26,17 +26,17 @@ service.interceptors.request.use(config => {
   return config
 }, error => {
   // Do something with request error
-  console.log(error) // for debug
+  console.log(error); // for debug
   Promise.reject(error)
-})
+});
 
 // respone interceptor
 service.interceptors.response.use(
   // response => response,
   response => {
-    console.log('response from: ' + response.config.url);
+    console.log('Response From: ' + response.config.url);
     console.log(response);
-    if (response.data.monitor) {  // 为本地登录模拟单独设置
+    if (response.data.monitor) { // 为本地登录模拟单独设置
       return response;
     } else {
       if (response.data.status !== 200) {
@@ -49,7 +49,6 @@ service.interceptors.response.use(
       }
       return response;
     }
-
   },
   /**
   * 下面的注释为通过response自定义code来标示请求状态，当code返回如下情况为权限有问题，登出并返回到登录页
@@ -79,13 +78,14 @@ service.interceptors.response.use(
   //       return response.data;
   //     }
   error => {
-    console.log('err' + error)// for debug
+    console.log('Request Error Info: ');
+    console.log(error); // for debug
     Message({
       message: error.message,
       type: 'info',
       duration: 5 * 1000
-    })
+    });
     return Promise.reject(error)
-  })
+  });
 
 export default service
