@@ -144,11 +144,23 @@ export default {
     position: fixed;
     height: 100%;
     width: 100%;
-    background: url("../../assets/images/mainbg.jpg") center no-repeat;
-    background-size: cover;
     @include flex();
     @include flex-direction(column);
     @include justify-content(space-between);
+    background: #333;
+
+    :after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: url("../../assets/images/mainbg.jpg") center no-repeat;
+      background-size: cover;
+      @include filter-blur(5px);
+    }
+
     .login-form {
       width: 420px;
       padding: 30px;
