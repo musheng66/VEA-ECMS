@@ -102,9 +102,10 @@ export const asyncRouterMap = [
             path: 'list',
             name: 'list',
             component: _import('lines1000/repository/list'),
-            onlyShow: true, // 设置只显示此菜单项
+            onlyShow: true, // 设置只显示此菜单项，左侧菜单icon和title优先显示上一级的。修改：Sidebar/SidebarItem.vue
             meta: {
               title: 'lines1000.repository.list',
+              active: '/lines1000/repository/list', // 设置左侧菜单active效果，要与$route.path一致。修改：Sidebar/index.vue
               roles: ['admin'] // or you can only set roles in sub nav
             },
           },
@@ -115,6 +116,7 @@ export const asyncRouterMap = [
             component: _import('lines1000/repository/view'),
             meta: {
               title: 'lines1000.repository.add',
+              active: '/lines1000/repository/list', // 设置左侧菜单active效果，要与$route.path一致。修改：Sidebar/index.vue
               roles: ['admin'] // or you can only set roles in sub nav
             }
           },
@@ -126,6 +128,7 @@ export const asyncRouterMap = [
             meta: {
               isEdit: true, // set edit, so we can judge it on 'view' component
               title: 'lines1000.repository.edit',
+              active: '/lines1000/repository/list', // 设置左侧菜单active效果，要与$route.path一致。修改：Sidebar/index.vue
               roles: ['admin'] // or you can only set roles in sub nav
             }
           }
