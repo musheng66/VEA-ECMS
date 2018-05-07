@@ -19,3 +19,13 @@
     },
   }
 </script>
+<style rel="stylesheet/scss" lang="scss">
+  @import "styles/variables";
+
+  @media (max-width: #{$responsive-width-xs}) {
+
+    #app {
+      min-width: $responsive-width-xs;
+    }
+  }
+</style>

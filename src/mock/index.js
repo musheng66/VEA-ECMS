@@ -1,6 +1,7 @@
 import Mock from 'mockjs'
 import loginAPI from './login'
 import lines1000API from './lines1000'
+import passportAPI from './passport'
 
 // Mock.setup({
 //   timeout: '350-600'
@@ -23,5 +24,10 @@ Mock.mock(lines1000newapiServer + '/manage/getProOperallUserList', 'post', lines
 Mock.mock(lines1000newapiServer + '/manage/addProOperallUser', 'post', lines1000API.addProOperallUser);
 Mock.mock(lines1000newapiServer + '/manage/updProOperallUser', 'post', lines1000API.updProOperallUser);
 Mock.mock(lines1000newapiServer + '/manage/delProOperallUser', 'post', lines1000API.delProOperallUser);
+
+// passport相关
+const passportServer = 'http://passport.eben.cn';
+// 导出激活设备列表
+Mock.mock(passportServer + '/export/api_exportActivateDevice', 'post', passportAPI.exportActivateDevice);
 
 export default Mock;

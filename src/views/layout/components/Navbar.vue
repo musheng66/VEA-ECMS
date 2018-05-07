@@ -74,65 +74,119 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
   @import "../../../styles/variables";
+  @import "../../../styles/mixin";
 
-.navbar {
-  height: $navbar-height;
-  line-height: $navbar-height;
-  border-radius: 0px !important;
-  .hamburger-container {
-    line-height: 58px;
-    height: 50px;
-    float: left;
-    padding: 0 10px;
-  }
-  .breadcrumb-container{
-    float: left;
-  }
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
-  }
-  .right-menu {
-    float: right;
-    height: 100%;
-    &:focus{
-     outline: none;
+  #app .navbar {
+    height: $navbar-height;
+    line-height: $navbar-height;
+    border-radius: 0px !important;
+    .hamburger-container {
+      line-height: 58px;
+      height: $navbar-height;
+      float: left;
+      padding: 0 10px;
+
+      position: absolute;
+      left: calc(#{$sidebar-width} - #{$sidebar-hide-width});
+      background: #f5f7fa;
+      @include transition-common(left, 0.28s);
     }
-    .right-menu-item {
+    .app-breadcrumb.el-breadcrumb {
+
+    }
+
+    .breadcrumb-container{
+      float: left;
+      width: calc(100vw - 10px - 40px - 160px - 66px);
+      overflow: hidden;
+      height: $navbar-height;
+      white-space: nowrap;
+    }
+    .errLog-container {
       display: inline-block;
-      margin: 0 8px;
-    }
-    .screenfull {
-      height: 20px;
-    }
-    .international{
       vertical-align: top;
     }
-    .theme-switch {
-      vertical-align: 15px;
-    }
-    .avatar-container {
-      height: 50px;
-      margin-right: 30px;
-      .avatar-wrapper {
-        cursor: pointer;
-        margin-top: 5px;
-        position: relative;
-        .user-avatar {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
-        .el-icon-caret-bottom {
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
+    .right-menu {
+      float: right;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      &:focus{
+        outline: none;
+      }
+      .right-menu-item {
+        display: inline-block;
+        margin: 0 8px;
+      }
+      .screenfull {
+        height: 20px;
+      }
+      .international{
+        vertical-align: top;
+      }
+      .theme-switch {
+        vertical-align: 15px;
+      }
+      .avatar-container {
+        height: 50px;
+        margin-right: 30px;
+        .avatar-wrapper {
+          cursor: pointer;
+          margin-top: 5px;
+          position: relative;
+          .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+          }
+          .el-icon-caret-bottom {
+            position: absolute;
+            right: -20px;
+            top: 25px;
+            font-size: 12px;
+          }
         }
       }
     }
   }
-}
+
+  #app .hideSidebar {
+    .hamburger-container {
+      position: relative;
+      left: 0;
+      background: none;
+    }
+
+    .app-breadcrumb.el-breadcrumb {
+
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    #app {
+      // 主体区域
+      .main-container {
+        margin-left: $sidebar-width;
+
+        .hamburger-container {
+          position: relative;
+          left: 0;
+          background: none;
+        }
+      }
+
+      .hideSidebar {
+        .sidebar-container,.sidebar-container .el-menu {
+          width: $sidebar-hide-width!important;
+          // overflow: inherit;
+        }
+        .main-container {
+          margin-left: $sidebar-hide-width;
+        }
+      }
+    }
+  }
 </style>

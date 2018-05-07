@@ -29,5 +29,6 @@ export default {
     height: calc(100vh - #{$navbar-height});
     overflow: auto;
     overflow-x: hidden;
+    width: 100%;
   }
 </style>

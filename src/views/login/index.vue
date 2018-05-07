@@ -122,6 +122,13 @@ export default {
       }
       .el-input__suffix {
 
+        .el-input__suffix-inner {
+
+          .el-icon-view:before {
+            line-height: 48px;
+          }
+        }
+
         .el-input__suffix-inner:hover {
           cursor: pointer;
         }

@@ -2,7 +2,7 @@
   <div class="list">
     <section class="page">
       <div class="func-area">
-        <el-button type="primary" class="" @click="addPerson()">新增人员</el-button>
+        <el-button type="primary" class="" @click="addPerson()" icon="el-icon-plus">新增人员</el-button>
       </div>
       <div class="table-area">
         <el-table

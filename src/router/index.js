@@ -42,7 +42,7 @@ export const constantRouterMap = [
       path: 'dashboard',
       component: _import('dashboard/index'),
       name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+      meta: { title: 'dashboard', icon: 'international', noCache: true }
     }]
   },
 
@@ -100,7 +100,7 @@ export const asyncRouterMap = [
         children: [
           {
             path: 'list',
-            name: 'list',
+            name: 'repository-list',
             component: _import('lines1000/repository/list'),
             onlyShow: true, // 设置只显示此菜单项，左侧菜单icon和title优先显示上一级的。修改：Sidebar/SidebarItem.vue
             meta: {
@@ -111,7 +111,7 @@ export const asyncRouterMap = [
           },
           {
             path: 'add',
-            name: 'add',
+            name: 'repository-add',
             hidden: true,
             component: _import('lines1000/repository/view'),
             meta: {
@@ -122,7 +122,7 @@ export const asyncRouterMap = [
           },
           {
             path: 'edit/:id',
-            name: 'edit',
+            name: 'repository-edit',
             hidden: true,
             component: _import('lines1000/repository/view'),
             meta: {
@@ -147,7 +147,7 @@ export const asyncRouterMap = [
         children: [
           {
             path: 'list',
-            name: 'list',
+            name: 'person-list',
             component: _import('lines1000/person/list'),
             onlyShow: true, // 设置只显示此菜单项
             meta: {
@@ -158,27 +158,54 @@ export const asyncRouterMap = [
           },
           {
             path: 'add',
-            name: 'add',
+            name: 'person-add',
             hidden: true,
             component: _import('lines1000/person/view'),
             meta: {
               title: 'lines1000.person.add',
+              active: '/lines1000/person/list',
               roles: ['admin'] // or you can only set roles in sub nav
             }
           },
           {
             path: 'edit/:id',
-            name: 'edit',
+            name: 'person-edit',
             hidden: true,
             component: _import('lines1000/person/view'),
             meta: {
               isEdit: true, // set edit, so we can judge it on 'view' component
               title: 'lines1000.person.edit',
+              active: '/lines1000/person/list',
               roles: ['admin'] // or you can only set roles in sub nav
             }
           }
         ]
       },
+    ]
+  },
+
+  {
+    path: '/passport',
+    name: 'passport',
+    component: Layout,
+    redirect: 'noredirect',
+    alwaysShow: true,
+    meta: {
+      icon: 'excel',
+      title: 'passport.root',
+      roles: ['admin', 'export']
+    }, // you can set roles in root nav
+    children: [
+      {
+        path: 'exportActivateDevice',
+        name: 'export-active-device',
+        component: _import('passport/exportActivateDevice'),
+        meta: {
+          icon: 'table',
+          title: 'passport.exportActivateDevice',
+          roles: ['admin', 'export']
+        }, // you can set roles in root nav
+      }
     ]
   },
 

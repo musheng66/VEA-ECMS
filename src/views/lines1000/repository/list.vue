@@ -2,7 +2,7 @@
   <div class="list">
     <section class="page">
       <div class="func-area">
-        <el-button type="primary" class="" @click="addRepositoryPage()">新增代码库</el-button>
+        <el-button type="primary" class="" @click="addRepositoryPage()" icon="el-icon-plus">新增代码库</el-button>
       </div>
       <div class="table-area">
         <el-table

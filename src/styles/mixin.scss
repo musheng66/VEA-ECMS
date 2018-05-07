@@ -240,3 +240,12 @@
   -ms-filter: blur($blur);
   filter: blur($blur);
 }
+
+// 变形
+@mixin transform($action) {
+  transform: $action;
+  -ms-transform: $action; 	/* IE 9 */
+  -moz-transform: $action; 	/* Firefox */
+  -webkit-transform: $action; /* Safari 和 Chrome */
+  -o-transform: $action; 	/* Opera */
+}

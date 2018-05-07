@@ -6,6 +6,7 @@ import permission from './modules/permission'
 import tagsView from './modules/tagsView'
 import user from './modules/user'
 import lines1000 from './modules/lines1000'
+import passport from './modules/passport'
 import getters from './getters'
 
 Vue.use(Vuex);
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
     permission,
     tagsView,
     user,
-    lines1000
+    lines1000,
+    passport
   },
   getters
 });
