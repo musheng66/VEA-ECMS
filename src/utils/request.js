@@ -36,19 +36,16 @@ service.interceptors.response.use(
   response => {
     console.log('Response From: ' + response.config.url);
     console.log(response);
-    if (response.data.monitor) { // 为本地登录模拟单独设置
-      return response;
-    } else {
-      if (response.data.status !== 200) {
-        Message({
-          message: response.data.message,
-          type: 'error',
-          duration: 5 * 1000
-        });
-        return Promise.reject('error');
-      }
-      return response;
+
+    if (response.data.status !== 200) {
+      Message({
+        message: response.data.message,
+        type: 'error',
+        duration: 5 * 1000
+      });
+      return Promise.reject('error');
     }
+    return response;
   },
   /**
   * 下面的注释为通过response自定义code来标示请求状态，当code返回如下情况为权限有问题，登出并返回到登录页

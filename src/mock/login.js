@@ -23,7 +23,39 @@ const userMap = {
 export default {
   loginByUsername: config => {
     const params = requestParamsToJSON(config.body);
-    return userMap[params.username]
+    let valid = false;
+    let errorMessage = {};
+    let data = {};
+    switch (params.username) {
+      case 'admin':
+        if (params.password === '111111') {
+          valid = true;
+        } else {
+          errorMessage.status = 403;
+          errorMessage.message = '密码错误！';
+        }
+        break;
+      case 'editor':
+        if (params.password === '111111') {
+          valid = true;
+        } else {
+          errorMessage.status = 403;
+          errorMessage.message = '密码错误！';
+        }
+        break;
+      default:
+        errorMessage.status = 404;
+        errorMessage.message = '用户名不存在！';
+        break;
+    }
+    if (valid) {
+      data = userMap[params.username];
+      data.status = 200;
+      data.message = '登录成功！';
+      return data;
+    } else {
+      return errorMessage;
+    }
   },
   getUserInfo: config => {
     const { token } = param2Obj(config.url);
