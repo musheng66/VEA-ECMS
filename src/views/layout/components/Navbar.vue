@@ -99,7 +99,7 @@ export default {
 
     .breadcrumb-container{
       float: left;
-      width: calc(100vw - 10px - 40px - 160px - 66px);
+      max-width: calc(100vw - 10px - 40px - 160px - 66px);
       overflow: hidden;
       height: $navbar-height;
       white-space: nowrap;
