@@ -103,9 +103,7 @@
           } catch (e) {
             console.log(e);
           }
-        }).catch((err) => {
-          console.log(err);
-        });
+        }).catch(() => { });
       },
 
       // 获取系统版本
@@ -117,9 +115,7 @@
           } catch (e) {
             console.log(e);
           }
-        }).catch((err) => {
-          console.log(err);
-        });
+        }).catch(() => { });
       },
 
       // 查询方法
@@ -134,9 +130,7 @@
             console.log(e);
           }
           that.loading = false;
-        }).catch((err) => {
-          console.log('get statistics list fail info:');
-          console.log(err);
+        }).catch(() => {
           that.loading = false;
         });
       },
