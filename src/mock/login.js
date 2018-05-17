@@ -59,10 +59,30 @@ export default {
   },
   getUserInfo: config => {
     const { token } = param2Obj(config.url);
-    if (userMap[token]) {
-      return userMap[token]
+    let valid = false;
+    let errorMessage = {};
+    let data = {};
+    switch (token) {
+      case 'admin':
+        valid = true;
+        break;
+      case 'editor':
+        valid = true;
+        break;
+      default:
+        valid = false;
+        break;
+
+    }
+    if (valid) {
+      data = userMap[token];
+      data.status = 200;
+      data.message = '获取用户信息成功！';
+      return data;
     } else {
-      return false
+      errorMessage.status = 401;
+      errorMessage.message = '获取用户信息失败，请重新登录！';
+      return errorMessage;
     }
   },
   logout: () => { return { status: 200 }; }

@@ -1,6 +1,6 @@
 import router from './router'
 import store from './store'
-import { Message } from 'element-ui'
+// import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
 import { getToken } from '@/utils/auth' // getToken from cookie
@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
           })
         }).catch(() => {
           store.dispatch('FedLogOut').then(() => {
-            Message.error('Verification failed, please login again');
+            // Message.error('Verification failed, please login again');
             next({ path: '/login' });
           })
         })
