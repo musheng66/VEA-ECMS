@@ -43,7 +43,7 @@ export default {
     theme: '换肤'
   },
   login: {
-    title: '壹人壹本·ECMS',
+    title: '壹人壹本·EMIS',
     logIn: '登 录',
     usernamePlaceholder: '请输入用户名',
     passwordPlaceholder: '请输入密码',
