@@ -29,5 +29,9 @@ Mock.mock(lines1000newapiServer + '/manage/delProOperallUser', 'post', lines1000
 const passportServer = 'http://passport.eben.cn';
 // 导出激活设备列表
 Mock.mock(passportServer + '/export/api_exportActivateDevice', 'post', passportAPI.exportActivateDevice);
+// 设备升级统计
+Mock.mock(passportServer + '/upgrade/get_device_type', 'post', passportAPI.getDeviceType);
+Mock.mock(passportServer + '/upgrade/get_sys_version', 'post', passportAPI.getSysVersion);
+Mock.mock(passportServer + '/upgrade/statistics_upgrade', 'post', passportAPI.statisticsUpgrade);
 
 export default Mock;

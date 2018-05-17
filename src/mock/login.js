@@ -17,7 +17,15 @@ const userMap = {
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: '编辑人员',
     monitor: true,
-  }
+  },
+  statistics: {
+    roles: ['statistics'],
+    token: 'statistics',
+    introduction: '我是统计人员',
+    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    name: '统计人员',
+    monitor: true,
+  },
 };
 
 export default {
@@ -36,6 +44,14 @@ export default {
         }
         break;
       case 'editor':
+        if (params.password === '111111') {
+          valid = true;
+        } else {
+          errorMessage.status = 403;
+          errorMessage.message = '密码错误！';
+        }
+        break;
+      case 'statistics':
         if (params.password === '111111') {
           valid = true;
         } else {
@@ -67,6 +83,9 @@ export default {
         valid = true;
         break;
       case 'editor':
+        valid = true;
+        break;
+      case 'statistics':
         valid = true;
         break;
       default:

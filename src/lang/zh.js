@@ -28,6 +28,7 @@ export default {
     passport: {
       root: '信息管理',
       exportActivateDevice: '导出激活设备信息',
+      updateStatistics: '系统升级统计',
 
     }
   },

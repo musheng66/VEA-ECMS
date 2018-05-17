@@ -193,7 +193,7 @@ export const asyncRouterMap = [
     meta: {
       icon: 'excel',
       title: 'passport.root',
-      roles: ['admin', 'export']
+      roles: ['admin', 'export', 'statistics']
     }, // you can set roles in root nav
     children: [
       {
@@ -205,7 +205,17 @@ export const asyncRouterMap = [
           title: 'passport.exportActivateDevice',
           roles: ['admin', 'export']
         }, // you can set roles in root nav
-      }
+      },
+      {
+        path: 'updateStatistics',
+        name: 'update-statistics',
+        component: _import('passport/updateStatistics'),
+        meta: {
+          icon: 'chart',
+          title: 'passport.updateStatistics',
+          roles: ['admin', 'statistics']
+        }, // you can set roles in root nav
+      },
     ]
   },
 
