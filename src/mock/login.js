@@ -36,7 +36,7 @@ export default {
     let data = {};
     switch (params.username) {
       case 'admin':
-        if (params.password === '111111') {
+        if (params.password === 'eben123') {
           valid = true;
         } else {
           errorMessage.status = 403;
@@ -52,7 +52,7 @@ export default {
         }
         break;
       case 'statistics':
-        if (params.password === '111111') {
+        if (params.password === '11111111') {
           valid = true;
         } else {
           errorMessage.status = 403;
