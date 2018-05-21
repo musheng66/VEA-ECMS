@@ -191,9 +191,9 @@ export const asyncRouterMap = [
     redirect: 'noredirect',
     alwaysShow: true,
     meta: {
-      icon: 'excel',
+      icon: 'peoples',
       title: 'passport.root',
-      roles: ['admin', 'export', 'statistics']
+      roles: ['admin', 'export']
     }, // you can set roles in root nav
     children: [
       {
@@ -206,13 +206,28 @@ export const asyncRouterMap = [
           roles: ['admin', 'export']
         }, // you can set roles in root nav
       },
+    ]
+  },
+
+  {
+    path: '/mis',
+    name: 'mis',
+    component: Layout,
+    redirect: 'noredirect',
+    alwaysShow: true,
+    meta: {
+      icon: 'star',
+      title: 'mis.root',
+      roles: ['admin', 'statistics']
+    }, // you can set roles in root nav
+    children: [
       {
         path: 'updateStatistics',
         name: 'update-statistics',
-        component: _import('passport/updateStatistics'),
+        component: _import('mis/updateStatistics'),
         meta: {
           icon: 'chart',
-          title: 'passport.updateStatistics',
+          title: 'mis.updateStatistics',
           roles: ['admin', 'statistics']
         }, // you can set roles in root nav
       },

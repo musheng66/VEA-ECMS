@@ -2,6 +2,7 @@ import Mock from 'mockjs'
 import loginAPI from './login'
 import lines1000API from './lines1000'
 import passportAPI from './passport'
+import misAPI from './mis'
 
 // Mock.setup({
 //   timeout: '350-600'
@@ -29,9 +30,12 @@ Mock.mock(lines1000newapiServer + '/manage/delProOperallUser', 'post', lines1000
 const passportServer = 'http://passport.eben.cn';
 // 导出激活设备列表
 Mock.mock(passportServer + '/export/api_exportActivateDevice', 'post', passportAPI.exportActivateDevice);
+
+// mis相关
+const misServer = 'http://api.mis.eben.cn';
 // 设备升级统计
-Mock.mock(passportServer + '/upgrade/get_device_type', 'post', passportAPI.getDeviceType);
-Mock.mock(passportServer + '/upgrade/get_sys_version', 'post', passportAPI.getSysVersion);
-Mock.mock(passportServer + '/upgrade/statistics_upgrade', 'post', passportAPI.statisticsUpgrade);
+Mock.mock(misServer + '/upgrade/get_device_type', 'post', misAPI.getDeviceType);
+Mock.mock(misServer + '/upgrade/get_sys_version', 'post', misAPI.getSysVersion);
+Mock.mock(misServer + '/upgrade/statistics_upgrade', 'post', misAPI.statisticsUpgrade);
 
 export default Mock;

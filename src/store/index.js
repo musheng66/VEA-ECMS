@@ -7,6 +7,7 @@ import tagsView from './modules/tagsView'
 import user from './modules/user'
 import lines1000 from './modules/lines1000'
 import passport from './modules/passport'
+import mis from './modules/mis'
 import getters from './getters'
 
 Vue.use(Vuex);
@@ -19,7 +20,8 @@ const store = new Vuex.Store({
     tagsView,
     user,
     lines1000,
-    passport
+    passport,
+    mis
   },
   getters
 });

@@ -26,11 +26,15 @@ export default {
     },
 
     passport: {
-      root: '信息管理',
+      root: '个人中心',
       exportActivateDevice: '导出激活设备信息',
-      updateStatistics: '系统升级统计',
+    },
 
+    mis: {
+      root: '信息管理',
+      updateStatistics: '系统升级统计',
     }
+
   },
   siteInfo: {
     copyright: '北京壹人壹本信息科技有限公司·北京研发中心 @ 2018年 3月'
