@@ -1,5 +1,7 @@
 import { repositoryQuery, repositoryAdd, repositoryEdit, repositoryDelete } from '@/api/lines1000'
 import { getProOperallUserList, delProOperallUser, addProOperallUser, updProOperallUser, ccPouName, ccPouAliasname, ccPouCnname } from '@/api/lines1000'
+import { getProUrlList, updProUrl } from '@/api/lines1000'
+import { getProOperallCbuList, forv4UpdProOperallCbu, getProOperallCbuListForexcel, forv4DownSummarizelog, forv4Stat } from '@/api/lines1000'
 
 const lines1000 = {
   state: {
@@ -9,6 +11,7 @@ const lines1000 = {
   },
 
   actions: {
+    // 代码库管理
     // 获取代码库列表
     RepositoryQuery({ commit }, params) {
       return new Promise((resolve, reject) => {
@@ -49,7 +52,7 @@ const lines1000 = {
         })
       })
     },
-
+    // 人员管理
     // 获取人员列表
     GetProOperallUserList({ commit }, params) {
       return new Promise((resolve, reject) => {
@@ -114,6 +117,78 @@ const lines1000 = {
     CcPouAliasname({ commit }, params) {
       return new Promise((resolve, reject) => {
         ccPouAliasname(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 统计路径管理
+    // 获取统计路径列表
+    GetProUrlList({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        getProUrlList(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 编辑统计路径
+    UpdProUrl({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        updProUrl(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 统计
+    // 获取每次按人员统计的数据列表接口
+    GetProOperallCbuList({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        getProOperallCbuList(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 更新人员bug数量
+    Forv4UpdProOperallCbu({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        forv4UpdProOperallCbu(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 获取要导出的人员信息
+    GetProOperallCbuListForexcel({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        getProOperallCbuListForexcel(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 获取所有下载文件的路径
+    Forv4DownSummarizelog({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        forv4DownSummarizelog(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 统计比对接口
+    Forv4Stat({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        forv4Stat(params).then(response => {
           resolve(response)
         }).catch(error => {
           reject(error)

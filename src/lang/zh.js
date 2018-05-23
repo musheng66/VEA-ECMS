@@ -22,6 +22,17 @@ export default {
         list: '列表',
         add: '新增',
         edit: '编辑',
+      },
+      staturls: {
+        root: '统计路径管理',
+        list: '列表',
+        add: '新增',
+        edit: '编辑',
+      },
+      bugcalc: {
+        root: 'Bug率统计',
+        list: '列表',
+        calc: '统计'
       }
     },
 

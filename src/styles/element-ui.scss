@@ -85,3 +85,8 @@
 .app-main .el-date-editor .el-range-separator {
   width: auto;
 }
+
+// form
+form.el-form {
+  max-width: $responsive-width-xs;
+}

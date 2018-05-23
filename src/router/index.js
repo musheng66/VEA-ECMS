@@ -142,7 +142,7 @@ export const asyncRouterMap = [
         meta: {
           title: 'lines1000.person.root',
           icon: 'peoples',
-          roles: ['admin'] // or you can only set roles in sub nav
+          roles: ['admin']
         },
         children: [
           {
@@ -153,7 +153,7 @@ export const asyncRouterMap = [
             meta: {
               title: 'lines1000.person.list',
               icon: 'peoples',
-              roles: ['admin'] // or you can only set roles in sub nav
+              roles: ['admin']
             },
           },
           {
@@ -164,7 +164,7 @@ export const asyncRouterMap = [
             meta: {
               title: 'lines1000.person.add',
               active: '/lines1000/person/list',
-              roles: ['admin'] // or you can only set roles in sub nav
+              roles: ['admin']
             }
           },
           {
@@ -173,10 +173,81 @@ export const asyncRouterMap = [
             hidden: true,
             component: _import('lines1000/person/view'),
             meta: {
-              isEdit: true, // set edit, so we can judge it on 'view' component
+              isEdit: true,
               title: 'lines1000.person.edit',
               active: '/lines1000/person/list',
-              roles: ['admin'] // or you can only set roles in sub nav
+              roles: ['admin']
+            }
+          }
+        ]
+      },
+      {
+        path: '/lines1000/staturls',
+        name: 'staturls',
+        redirect: '/lines1000/staturls/list',
+        component: _import('lines1000/index'),
+        meta: {
+          title: 'lines1000.staturls.root',
+          icon: 'component',
+          roles: ['admin']
+        },
+        children: [
+          {
+            path: 'list',
+            name: 'staturls-list',
+            component: _import('lines1000/staturls/list'),
+            onlyShow: true,
+            meta: {
+              title: 'lines1000.staturls.list',
+              icon: 'peoples',
+              roles: ['admin']
+            },
+          },
+          {
+            path: 'edit/:id',
+            name: 'staturls-edit',
+            hidden: true,
+            component: _import('lines1000/staturls/view'),
+            meta: {
+              isEdit: true,
+              title: 'lines1000.staturls.edit',
+              active: '/lines1000/staturls/list',
+              roles: ['admin']
+            }
+          }
+        ]
+      },
+      {
+        path: '/lines1000/bugcalc',
+        name: 'bugcalc',
+        redirect: '/lines1000/bugcalc/list',
+        component: _import('lines1000/index'),
+        meta: {
+          title: 'lines1000.bugcalc.root',
+          icon: 'bug',
+          roles: ['admin']
+        },
+        children: [
+          {
+            path: 'list',
+            name: 'bugcalc-list',
+            component: _import('lines1000/bugcalc/list'),
+            onlyShow: true,
+            meta: {
+              title: 'lines1000.bugcalc.list',
+              icon: 'peoples',
+              roles: ['admin']
+            },
+          },
+          {
+            path: 'calc/:type',
+            name: 'bugcalc-calc',
+            hidden: true,
+            component: _import('lines1000/bugcalc/view'),
+            meta: {
+              title: 'lines1000.bugcalc.calc',
+              active: '/lines1000/bugcalc/list',
+              roles: ['admin']
             }
           }
         ]
@@ -194,7 +265,7 @@ export const asyncRouterMap = [
       icon: 'peoples',
       title: 'passport.root',
       roles: ['admin', 'export']
-    }, // you can set roles in root nav
+    },
     children: [
       {
         path: 'exportActivateDevice',
@@ -204,7 +275,7 @@ export const asyncRouterMap = [
           icon: 'table',
           title: 'passport.exportActivateDevice',
           roles: ['admin', 'export']
-        }, // you can set roles in root nav
+        },
       },
     ]
   },
@@ -219,7 +290,7 @@ export const asyncRouterMap = [
       icon: 'star',
       title: 'mis.root',
       roles: ['admin', 'statistics']
-    }, // you can set roles in root nav
+    },
     children: [
       {
         path: 'updateStatistics',
@@ -229,7 +300,7 @@ export const asyncRouterMap = [
           icon: 'chart',
           title: 'mis.updateStatistics',
           roles: ['admin', 'statistics']
-        }, // you can set roles in root nav
+        },
       },
     ]
   },
