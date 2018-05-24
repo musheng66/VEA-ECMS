@@ -5,7 +5,7 @@ import passportAPI from './passport'
 import misAPI from './mis'
 
 Mock.setup({
-  timeout: '350-600'
+  timeout: '150-600'
 });
 
 // 登录相关
@@ -29,12 +29,11 @@ Mock.mock(lines1000newapiServer + '/manage/delProOperallUser', 'post', lines1000
 Mock.mock(lines1000newapiServer + '/manage/getProUrlList', 'post', lines1000API.getProUrlList);
 Mock.mock(lines1000newapiServer + '/manage/updProUrl', 'post', lines1000API.updProUrl);
 // Bug率统计
-//Mock.mock(lines1000newapiServer + '/manage/getProOperallCbuList', 'post', lines1000API.getProOperallCbuList);
+Mock.mock(lines1000newapiServer + '/manage/getProOperallCbuList', 'post', lines1000API.getProOperallCbuList);
 Mock.mock(lines1000newapiServer + '/manage/forv4_updProOperallCbu', 'post', lines1000API.forv4UpdProOperallCbu);
 Mock.mock(lines1000newapiServer + '/manage/getProOperallCbuListForexcel', 'post', lines1000API.getProOperallCbuListForexcel);
-//Mock.mock(lines1000newapiServer + '/manage/forv4_down_summarizelog', 'post', lines1000API.forv4DownSummarizelog);
+Mock.mock(lines1000newapiServer + '/manage/forv4_down_summarizelog', 'post', lines1000API.forv4DownSummarizelog);
 Mock.mock(lines1000newapiServer + '/manage/forv4_stat', 'post', lines1000API.forv4Stat);
-
 
 // passport相关
 const passportServer = 'http://passport.eben.cn';

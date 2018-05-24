@@ -147,6 +147,45 @@ const cbuList = [
   },
 ];
 
+const logsList = [
+  {
+    "type": "svn",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/svndir\/yanweiyan_summarize.txt",
+    "filename": "yanweiyan_summarize.txt",
+    "cnname": "严维彦"
+  }, {
+    "type": "svn",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/svndir\/zhangzhimin_summarize.txt",
+    "filename": "zhangzhimin_summarize.txt",
+    "cnname": "张志敏"
+  }, {
+    "type": "svn",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/svndir\/muqing_summarize.txt",
+    "filename": "muqing_summarize.txt",
+    "cnname": "穆青"
+  }, {
+    "type": "svn",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/svndir\/tianjincheng_summarize.txt",
+    "filename": "tianjincheng_summarize.txt",
+    "cnname": "田锦程"
+  }, {
+    "type": "git",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/gitdir\/songyan_summarize.txt",
+    "filename": "songyan_summarize.txt",
+    "cnname": "宋岩"
+  }, {
+    "type": "git",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/gitdir\/chenchangliang_summarize.txt",
+    "filename": "chenchangliang_summarize.txt",
+    "cnname": "陈长亮"
+  }, {
+    "type": "git",
+    "downurl": "http:\/\/lines1000filesnew.eben.cn\/log\/1526613115\/gitdir\/xuyongfeng_summarize.txt",
+    "filename": "xuyongfeng_summarize.txt",
+    "cnname": "徐永峰"
+  }
+];
+
 export default {
   // 模拟代码库接口
   repositoryQuery: config => {
@@ -327,11 +366,14 @@ export default {
   // 获取所有下载文件的路径
   forv4DownSummarizelog: config => {
     const params = requestParamsToJSON(config.body);
-    return {
+    let returnData = {
       status: 200,
       message: '模拟成功',
-      received: params
+      received: params,
+      result: {}
     };
+    returnData.result.listarr = logsList;
+    return returnData;
   },
   // 统计比对接口
   forv4Stat: config => {

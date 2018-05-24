@@ -1,7 +1,7 @@
 import { repositoryQuery, repositoryAdd, repositoryEdit, repositoryDelete } from '@/api/lines1000'
 import { getProOperallUserList, delProOperallUser, addProOperallUser, updProOperallUser, ccPouName, ccPouAliasname, ccPouCnname } from '@/api/lines1000'
 import { getProUrlList, updProUrl } from '@/api/lines1000'
-import { getProOperallCbuList, forv4UpdProOperallCbu, getProOperallCbuListForexcel, forv4DownSummarizelog, forv4Stat } from '@/api/lines1000'
+import { getProOperallCbuList, forv4UpdProOperallCbu, getProOperallCbuListForexcel, forv4DownSummarizelog, downloadSummarizelog, forv4Stat } from '@/api/lines1000'
 
 const lines1000 = {
   state: {
@@ -179,6 +179,16 @@ const lines1000 = {
     Forv4DownSummarizelog({ commit }, params) {
       return new Promise((resolve, reject) => {
         forv4DownSummarizelog(params).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    // 下载统计日志
+    DownloadSummarizelog({ commit }, params) {
+      return new Promise((resolve, reject) => {
+        downloadSummarizelog(params).then(response => {
           resolve(response)
         }).catch(error => {
           reject(error)

@@ -61,7 +61,6 @@
 
 <script>
   import { scrollTop, dateConvert } from '@/utils/ebenUtils'
-  import { download } from '@/api/download'
   import FileSaver from 'file-saver'
   import XLSX from 'xlsx'
   import JSZip from 'jszip'
@@ -255,7 +254,7 @@
           try {
             // 获取文件并打包
             for(let item of urlData) {
-              let promise = download({ url: item.downurl });
+              let promise = that.$store.dispatch('DownloadSummarizelog', { url: item.downurl });
               promise.then(function (value) {
                 zip.file(item.type + '__' + item.filename, value, { binary: true }); // 逐个添加文件
                 cache[item.filename] = value;

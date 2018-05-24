@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+import download from '@/utils/download'
 
 const serverUrl = 'http://lines1000apinew.eben.cn';
 
@@ -247,6 +248,19 @@ export function getProOperallCbuListForexcel(data) {
 export function forv4DownSummarizelog(data) {
   return request({
     url: serverUrl + '/manage/forv4_down_summarizelog',
+    method: 'post',
+    data
+  })
+}
+
+/** 下载统计日志
+ * GET/POST
+ * **params**
+ * url 下载路径
+ */
+export function downloadSummarizelog(data) {
+  return download({
+    url: data.url,
     method: 'post',
     data
   })
