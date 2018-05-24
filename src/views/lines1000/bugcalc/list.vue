@@ -43,7 +43,7 @@
           <el-table-column prop="" label="操作" width="275px">
             <template slot-scope="scope">
               <el-button @click="exportExcel(scope.row)" type="primary" size="small" plain>导出为 Excel 表</el-button>
-              <el-button style="" @click="downloadLogs(scope.row)" type="warning" size="small" plain>统计日志下载</el-button>
+              <el-button style="display: none;" @click="downloadLogs(scope.row)" type="warning" size="small" plain>统计日志下载</el-button>
             </template>
           </el-table-column>
         </el-table>
