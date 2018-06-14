@@ -162,9 +162,11 @@ export function getCurrentTimeString() {
  * @returns {*|string}
  */
 export function dateConvert(time) {
+  if (!Moment(time).isValid()) return time;
   return time && Moment(time).format('YYYY-MM-DD HH:mm:ss')
 }
 export function dayConvert(time) {
+  if (!Moment(time).isValid()) return time;
   return time && Moment(time).format('YYYY-MM-DD')
 }
 
@@ -258,3 +260,21 @@ export function requestParamsToJSON(arg) {
   }
   return JSON.parse('{"' + decodeURIComponent(arg).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}')
 }
+
+/**
+ * 格式化文件大小
+ * @param value
+ * @returns {*}
+ */
+export function formatFileSize(value) {
+  if(isNaN(value) || String(value) == '0'){
+    return '0';
+  }
+  const unitArr = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const orginSize = parseFloat(value);
+  let index = Math.floor(Math.log(orginSize) / Math.log(1024));
+  let size = orginSize / Math.pow(1024, index);
+  size = size.toFixed(2); // 保留的小数位数
+  return size + unitArr[index];
+}
+
