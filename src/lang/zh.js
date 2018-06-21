@@ -44,6 +44,12 @@ export default {
     mis: {
       root: '信息管理',
       updateStatistics: '系统升级统计',
+    },
+
+    practices: {
+      root: '练习',
+      base: '基础',
+      echart: 'eChart'
     }
 
   },

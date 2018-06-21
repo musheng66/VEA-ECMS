@@ -12,6 +12,9 @@ const getters = {
   setting: state => state.user.setting,
   permission_routers: state => state.permission.routers,
   addRouters: state => state.permission.addRouters,
-  errorLogs: state => state.errorLog.logs
+  errorLogs: state => state.errorLog.logs,
+
+  xAxis: state => state.practices.xAxis,
+  series: state => state.practices.series,
 }
 export default getters

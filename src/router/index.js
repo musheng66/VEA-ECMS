@@ -297,9 +297,44 @@ export const asyncRouterMap = [
         name: 'update-statistics',
         component: _import('mis/updateStatistics'),
         meta: {
-          icon: 'chart',
+          icon: 'pie_chart',
           title: 'mis.updateStatistics',
           roles: ['admin', 'statistics']
+        },
+      },
+    ]
+  },
+
+  {
+    path: '/practices',
+    name: 'practices',
+    component: Layout,
+    redirect: 'noredirect',
+    alwaysShow: true,
+    meta: {
+      icon: 'practices',
+      title: 'practices.root',
+      roles: ['admin']
+    },
+    children: [
+      {
+        path: 'base',
+        name: 'base-practices',
+        component: _import('practices/base'),
+        meta: {
+          icon: 'base',
+          title: 'practices.base',
+          roles: ['admin']
+        },
+      },
+      {
+        path: 'echart',
+        name: 'echart-practices',
+        component: _import('practices/echarts'),
+        meta: {
+          icon: 'chart',
+          title: 'practices.echart',
+          roles: ['admin']
         },
       },
     ]
