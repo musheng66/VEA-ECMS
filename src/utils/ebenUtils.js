@@ -163,6 +163,19 @@ export function getCurrentTimeString() {
  */
 export function dateConvert(time) {
   if (!Moment(time).isValid()) return time;
+  // 判断位数
+  let timeStr = String(time);
+  timeStr = timeStr.slice(0, 13);
+  // 秒级时间戳加长为毫秒级
+  if (timeStr.length < 13) {
+    let numTo13 = 13 - timeStr.length;
+    let txtTo13 = '';
+    for (let i = 1; i <= numTo13; i ++) {
+      txtTo13 = txtTo13 + '0';
+    }
+    timeStr = timeStr + txtTo13;
+  }
+  time = Number(timeStr);
   return time && Moment(time).format('YYYY-MM-DD HH:mm:ss')
 }
 export function dayConvert(time) {
