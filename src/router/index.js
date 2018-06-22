@@ -337,6 +337,16 @@ export const asyncRouterMap = [
           roles: ['admin']
         },
       },
+      {
+        path: 'vuecomponent',
+        name: 'vuecomponent-practices',
+        component: _import('practices/vueComponent'),
+        meta: {
+          icon: 'vuejs',
+          title: 'practices.vueComponent',
+          roles: ['admin']
+        },
+      },
     ]
   },
 

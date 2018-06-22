@@ -49,7 +49,8 @@ export default {
     practices: {
       root: '练习',
       base: '基础',
-      echart: 'eChart'
+      echart: 'eChart',
+      vueComponent: 'VUE组件'
     }
 
   },
