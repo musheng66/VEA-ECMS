@@ -6,6 +6,7 @@ const getters = {
   token: state => state.user.token,
   avatar: state => state.user.avatar,
   name: state => state.user.name,
+  loginTime: state => state.user.logintime,
   introduction: state => state.user.introduction,
   status: state => state.user.status,
   roles: state => state.user.roles,
@@ -16,5 +17,5 @@ const getters = {
 
   xAxis: state => state.practices.xAxis,
   series: state => state.practices.series,
-}
-export default getters
+};
+export default getters;

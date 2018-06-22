@@ -1,33 +1,51 @@
 <template>
   <div class="dashboard-editor-container">
-    <h1>Welcome professor！</h1>
+    <section class="page">
+      <article>
+        <h1>欢迎</h1>
+        <h2>{{ username }}</h2>
+        <h5>登录时间： {{ loginTime }}</h5>
+      </article>
+    </section>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'dashboard-admin',
-  components: {
+  import { mapGetters } from 'vuex'
+  export default {
+    name: 'dashboard-admin',
+    components: {
 
-  },
-  data() {
-    return {
+    },
+    data() {
+      return {
 
+      }
+    },
+    methods: {
+
+    },
+    computed: {
+      // 映射 getters
+      ...mapGetters({
+        username: 'name',
+        loginTime: 'loginTime'
+      })
     }
-  },
-  methods: {
-
   }
-}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.dashboard-editor-container {
+  .dashboard-editor-container {
 
-  .chart-wrapper {
-    background: #fff;
-    padding: 16px 16px 0;
-    margin-bottom: 32px;
+    section.page {
+
+      article {
+
+        h1,h2,h3,h4,h5 {
+          padding: 0 0 15px 0;
+        }
+      }
+    }
   }
-}
 </style>

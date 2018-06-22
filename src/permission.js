@@ -1,9 +1,9 @@
 import router from './router'
 import store from './store'
-// import { Message } from 'element-ui'
+import { Message } from 'element-ui'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'// progress bar style
-import { getToken } from '@/utils/auth' // getToken from cookie
+import { getToken } from '@/utils/auth'
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
@@ -24,6 +24,7 @@ router.beforeEach((to, from, next) => {
       next({ path: '/' });
       NProgress.done();  // if current page is dashboard will not trigger	afterEach hook, so manually handle it
     } else {
+      // 由于只有一个管理员角色，无需每次刷新验证权限，现暂时去掉拉取user_info的逻辑，使用sessionStorage存放user_info，此处直接根据角色生成菜单。
       if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
         store.dispatch('GetUserInfo').then(res => { // 拉取user_info
           const roles = res.data.roles; // note: roles must be a array! such as: ['editor','develop']
@@ -33,7 +34,7 @@ router.beforeEach((to, from, next) => {
           })
         }).catch(() => {
           store.dispatch('FedLogOut').then(() => {
-            // Message.error('Verification failed, please login again');
+            Message.error('获取权限失败，请重新登录！');
             next({ path: '/login' });
           })
         })
@@ -46,6 +47,7 @@ router.beforeEach((to, from, next) => {
         }
         // 可删 ↑
       }
+
     }
   } else {
     /* has no token*/

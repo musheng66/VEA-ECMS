@@ -1,5 +1,6 @@
-import { loginByUsername, logout, getUserInfo } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import moment from 'moment';
+import { loginByUsername, logout, getUserInfo } from '@/api/login';
+import { getToken, setToken, removeToken, getRoles, setRoles, removeRoles, getLoginTime, setLoginTime, removeLoginTime, getName, setName, removeName } from '@/utils/auth';
 
 const user = {
   state: {
@@ -11,6 +12,7 @@ const user = {
     avatar: '',
     introduction: '',
     roles: [],
+    logintime: '',
     setting: {
       articlePlatform: []
     }
@@ -40,6 +42,9 @@ const user = {
     },
     SET_ROLES: (state, roles) => {
       state.roles = roles
+    },
+    SET_LOGINTIME: (state, time) => {
+      state.logintime = time
     }
   },
 
@@ -51,7 +56,14 @@ const user = {
         loginByUsername(username, userInfo.password).then(response => {
           const data = response.data;
           commit('SET_TOKEN', data.token);
-          setToken(response.data.token);
+          commit('SET_NAME', data.name);
+          let loginTime = moment().format('YYYY-MM-DD HH:mm:ss');
+          commit('SET_LOGINTIME', loginTime);
+          // 将登录信息存放在session中
+          setToken(data.token);
+          setRoles(data.roles);
+          setName(data.name);
+          setLoginTime(loginTime);
           resolve(response);
         }).catch(error => {
           reject(error);
@@ -64,16 +76,19 @@ const user = {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token).then(response => {
           if (!response.data) { // 由于mockjs 不支持自定义状态码只能这样hack
-            reject('error')
+            reject('error');
           }
-          const data = response.data
-          commit('SET_ROLES', data.roles)
-          commit('SET_NAME', data.name)
-          commit('SET_AVATAR', data.avatar)
-          commit('SET_INTRODUCTION', data.introduction)
-          resolve(response)
+          const data = response.data;
+          commit('SET_NAME', data.name);
+          commit('SET_TOKEN', getToken());
+          commit('SET_LOGINTIME', getLoginTime());
+          commit('SET_ROLES', data.roles);
+          commit('SET_AVATAR', data.avatar);
+          setToken(data.token);
+          setRoles(data.roles);
+          resolve(response);
         }).catch(error => {
-          reject(error)
+          reject(error);
         })
       })
     },
@@ -96,12 +111,17 @@ const user = {
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
-          commit('SET_TOKEN', '')
-          commit('SET_ROLES', [])
-          removeToken()
-          resolve()
+          commit('SET_TOKEN', '');
+          commit('SET_ROLES', []);
+          commit('SET_NAME', '');
+          commit('SET_LOGINTIME', '');
+          removeToken();
+          removeRoles();
+          removeName();
+          removeLoginTime();
+          resolve();
         }).catch(error => {
-          reject(error)
+          reject(error);
         })
       })
     },
@@ -109,9 +129,11 @@ const user = {
     // 前端 登出
     FedLogOut({ commit }) {
       return new Promise(resolve => {
-        commit('SET_TOKEN', '')
-        removeToken()
-        resolve()
+        commit('SET_TOKEN', '');
+        commit('SET_LOGINTIME', '');
+        removeToken();
+        removeLoginTime();
+        resolve();
       })
     },
 
