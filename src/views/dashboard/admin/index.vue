@@ -46,7 +46,7 @@
     methods: {
       initTimeStr() {
         const time = Moment.localeData(this.loginTime);
-        this.timeStr = time.meridiem(Moment(this.loginTime).hour(), Moment(this.loginTime, false).minute()) + '好';
+        this.timeStr = time.meridiem(Moment(this.loginTime).hour(), Moment(this.loginTime).minute(), true) + '好';
       }
     },
     computed: {
