@@ -50,7 +50,9 @@ export default {
       root: '练习',
       base: '基础',
       echart: 'eChart',
-      vueComponent: 'VUE组件'
+      vueComponent: 'VUE组件',
+      mxGraph: 'mxGraph',
+      jointjs: 'jointjs'
     }
 
   },

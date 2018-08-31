@@ -347,6 +347,26 @@ export const asyncRouterMap = [
           roles: ['admin']
         },
       },
+      {
+        path: 'mxGraph',
+        name: 'mxgraph-practices',
+        component: _import('practices/mxGraph'),
+        meta: {
+          icon: 'mxgraph',
+          title: 'practices.mxGraph',
+          roles: ['admin']
+        },
+      },
+      {
+        path: 'jointjs',
+        name: 'jointjs-practices',
+        component: _import('practices/jointjs'),
+        meta: {
+          icon: 'jointjs',
+          title: 'practices.jointjs',
+          roles: ['admin']
+        },
+      },
     ]
   },
 

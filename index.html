@@ -7,6 +7,7 @@
     <meta name="viewport" content="user-scalable=no, width=device-width,initial-scale=1,minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>壹人壹本 · 信息管理系统</title>
+    <link rel="stylesheet" type="text/css" href=<%= htmlWebpackPlugin.options.path %>/mxgraph/styles/grapheditor.css>
 	</head>
   <style>
 
@@ -75,5 +76,54 @@
 
 
     <script src=<%= htmlWebpackPlugin.options.path %>/tinymce4.7.5/tinymce.min.js></script>
+    <script type="text/javascript">
+      mxBasePath = '<%= htmlWebpackPlugin.options.path %>/mxgraph/javascript/src/';
+      STYLE_PATH = '<%= htmlWebpackPlugin.options.path %>/mxgraph/styles';
+      RESOURCES_PATH = '<%= htmlWebpackPlugin.options.path %>/mxgraph/resources';
+
+      STENCIL_PATH = '<%= htmlWebpackPlugin.options.path %>/mxgraph/stencils';
+      IMAGE_PATH = '<%= htmlWebpackPlugin.options.path %>/mxgraph/images';
+      STYLE_PATH = '<%= htmlWebpackPlugin.options.path %>/mxgraph/styles';
+      CSS_PATH = '<%= htmlWebpackPlugin.options.path %>/mxgraph/styles';
+    </script>
+    <script type="text/javascript">
+      // Parses URL parameters. Supported parameters are:
+      // - lang=xy: Specifies the language of the user interface.
+      // - touch=1: Enables a touch-style user interface.
+      // - storage=local: Enables HTML5 local storage.
+      // - chrome=0: Chromeless mode.
+      var urlParams = (function(url) {
+        var result = new Object();
+        var idx = url.lastIndexOf('?');
+        if (idx > 0) {
+          var params = url.substring(idx + 1).split('&');
+          for (var i = 0; i < params.length; i++) {
+            idx = params[i].indexOf('=');
+            if (idx > 0) {
+              result[params[i].substring(0, idx)] = params[i].substring(idx + 1);
+            }
+          }
+        }
+        return result;
+      })(window.location.href);
+      // Default resources are included in grapheditor resources
+      mxLoadResources = false;
+    </script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/deflate/pako.min.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/deflate/base64.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/jscolor/jscolor.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/sanitizer/sanitizer.min.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Init.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/javascript/mxClient.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/EditorUi.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Editor.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Sidebar.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Graph.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Format.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Shapes.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Actions.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Menus.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Toolbar.js></script>
+    <script type="text/javascript" src=<%= htmlWebpackPlugin.options.path %>/mxgraph/js/Dialogs.js></script>
 	</body>
 </html>
