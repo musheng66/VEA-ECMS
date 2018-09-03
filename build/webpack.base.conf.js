@@ -4,6 +4,10 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+// cesium 路径
+const cesiumSource = '../node_modules/cesium/Source'
+const cesiumNavi = '../node_modules/cesium-navigation/navigation'
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -29,13 +33,21 @@ module.exports = {
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+      : config.dev.assetsPublicPath,
+    // Needed to compile multiline strings in Cesium
+    sourcePrefix: ' '
+  },
+  amd: {
+    // Enable webpack-friendly use of require in Cesium
+    toUrlUndefined: true
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'cesium': path.resolve(__dirname, cesiumSource), // Cesium module name
+      'cesiumNavi': path.resolve(__dirname,cesiumNavi)
     }
   },
   module: {
@@ -85,7 +97,11 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
+    ],
+    /*
+    unknownContextRegExp: /^.\/.*$/, // 解决Error: Cannot find module "."的错误
+    */
+    unknownContextCritical: false // 让webpack 打印载入特定库时候警告
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

@@ -367,6 +367,16 @@ export const asyncRouterMap = [
           roles: ['admin']
         },
       },
+      {
+        path: 'cesium',
+        name: 'cesium-practices',
+        component: _import('practices/cesium'),
+        meta: {
+          icon: 'cesium',
+          title: 'practices.cesium',
+          roles: ['admin']
+        },
+      },
     ]
   },
 

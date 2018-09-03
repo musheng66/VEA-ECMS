@@ -8,6 +8,11 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+// cesium 路径
+const cesiumSource = 'node_modules/cesium/Source'
+const cesiumWorkers = '../Build/Cesium/Workers'
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -58,6 +63,24 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       title: 'vue-element-admin',
       path: config.dev.assetsPublicPath + config.dev.assetsSubDirectory
     }),
+    // cesium 配置
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' } ]),
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Assets'), to: 'Assets' } ]),
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' } ]),
+    // 更新，加载kml时候需要这个
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'ThirdParty/Workers' } ]),
+    new webpack.DefinePlugin({
+      // Define relative base path in cesium for loading assets
+      CESIUM_BASE_URL: JSON.stringify('')
+    }),
+    // copy custom static assets
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.dev.assetsSubDirectory,
+        ignore: ['.*']
+      }
+    ])
   ]
 })
 

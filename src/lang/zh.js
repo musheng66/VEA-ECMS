@@ -52,7 +52,8 @@ export default {
       echart: 'eChart',
       vueComponent: 'VUE组件',
       mxGraph: 'mxGraph',
-      jointjs: 'jointjs'
+      jointjs: 'jointjs',
+      cesium: 'Cesium'
     }
 
   },
