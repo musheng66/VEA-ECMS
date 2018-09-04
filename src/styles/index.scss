@@ -5,6 +5,10 @@
 @import './sidebar.scss';
 @import './btn.scss';
 
+html {
+  font-size: $standardFontSize;
+}
+
 body {
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
@@ -12,7 +16,8 @@ body {
   text-rendering: optimizeLegibility; //当绘制文本时，浏览器会侧重文本的可读性（清晰度），而不是渲染速度和几何 精度。该属性值可以用于字距调整和连字。
   //font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
 
-  font: normal 14px/1 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', STHeiti, SimSun, Arial, sans-serif;
+  font-family: 'Microsoft YaHei', 'Lantinghei SC', 'Open Sans', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', STHeiti, SimSun, Arial, sans-serif;
+  font-size: $standardFontSize;
   background-color: $main-page-bg;
   color: $main-font-color;
   overflow: hidden;

@@ -1,3 +1,9 @@
+// standard font size
+$standardFontSize: 16px;
+@function rem($px){ // $px为需要转换的字号
+  @return $px / $standardFontSize * 1rem;
+}
+
 $blue:#324157;
 $light-blue:#3A71A8;
 $red:#C03639;
@@ -23,8 +29,8 @@ $sidebar-hide-width: 56px;
 $main-page-bg: #EFEFEF;
 $main-font-color: $black;
 
-$appmain-padding: 15px;
-$navbar-height: 50px;
+$appmain-padding: rem(15px);
+$navbar-height: rem(50px);
 
 // css responsive width defined
 $responsive-width-small: 900px;
