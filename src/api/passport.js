@@ -1,4 +1,7 @@
 import request from '@/utils/request'
+import requestLocal from '@/utils/requestLocal'
+import PassportMock from '@/mock/passport'
+import _Vue from 'vue'
 
 const serverUrl = 'http://passport.eben.cn';
 
@@ -10,9 +13,13 @@ const serverUrl = 'http://passport.eben.cn';
  * endtime 结束时间
  */
 export function exportActivateDevice(data) {
-  return request({
-    url: serverUrl + '/export/api_exportActivateDevice',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/export/api_exportActivateDevice',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(PassportMock.exportActivateDevice({body: data}))
+  }
 }

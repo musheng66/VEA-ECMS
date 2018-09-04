@@ -1,5 +1,8 @@
 import request from '@/utils/request'
 import download from '@/utils/download'
+import requestLocal from '@/utils/requestLocal'
+import Lines1000Mock from '@/mock/lines1000'
+import _Vue from 'vue'
 
 const serverUrl = 'http://lines1000apinew.eben.cn';
 
@@ -11,11 +14,15 @@ const serverUrl = 'http://lines1000apinew.eben.cn';
  * page_num 每页项目数
  */
 export function repositoryQuery(data) {
-  return request({
-    url: serverUrl + '/manage/getProList',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/getProList',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.repositoryQuery({body: data}))
+  }
 }
 
 /** 删除代码库
@@ -24,11 +31,15 @@ export function repositoryQuery(data) {
  * id 项目id
  */
 export function repositoryDelete(data) {
-  return request({
-    url: serverUrl + '/manage/delPro',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/delPro',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.repositoryDelete({body: data}))
+  }
 }
 
 /** 新增代码库
@@ -38,11 +49,15 @@ export function repositoryDelete(data) {
  * urltype 1代表svn，2代表git
  */
 export function repositoryAdd(data) {
-  return request({
-    url: serverUrl + '/manage/addPro',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/addPro',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.repositoryAdd({body: data}))
+  }
 }
 
 /** 编辑代码库
@@ -54,11 +69,15 @@ export function repositoryAdd(data) {
  * id 项目id
  */
 export function repositoryEdit(data) {
-  return request({
-    url: serverUrl + '/manage/updPro',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/updPro',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.repositoryEdit({body: data}))
+  }
 }
 
 /** 作者列表
@@ -70,11 +89,15 @@ export function repositoryEdit(data) {
  * oper_uname 作者id名字
  */
 export function getProOperallUserList(data) {
-  return request({
-    url: serverUrl + '/manage/getProOperallUserList',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/getProOperallUserList',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.getProOperallUserList({body: data}))
+  }
 }
 
 /** 伪删除作者
@@ -83,11 +106,15 @@ export function getProOperallUserList(data) {
  * id 作者id
  */
 export function delProOperallUser(data) {
-  return request({
-    url: serverUrl + '/manage/delProOperallUser',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/delProOperallUser',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.delProOperallUser({body: data}))
+  }
 }
 
 /** 增加作者
@@ -98,11 +125,15 @@ export function delProOperallUser(data) {
  * oper_uname 作者名称
  */
 export function addProOperallUser(data) {
-  return request({
-    url: serverUrl + '/manage/addProOperallUser',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/addProOperallUser',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.addProOperallUser({body: data}))
+  }
 }
 
 /** 更改作者
@@ -114,11 +145,15 @@ export function addProOperallUser(data) {
  * oper_uname 作者名称
  */
 export function updProOperallUser(data) {
-  return request({
-    url: serverUrl + '/manage/updProOperallUser',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/updProOperallUser',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.updProOperallUser({body: data}))
+  }
 }
 
 /** 判断开发用名重复接口
@@ -129,11 +164,15 @@ export function updProOperallUser(data) {
  * uid 人员id
  */
 export function ccPouName(data) {
-  return request({
-    url: serverUrl + '/manage/cc_api_pou_name',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/cc_api_pou_name',
+      method: 'post',
+      data
+    })
+  } else {
+    return Promise.resolve({data: { valid: 'true' }})
+  }
 }
 
 /** 判断开发用别名重复接口
@@ -144,11 +183,15 @@ export function ccPouName(data) {
  * uid 人员id
  */
 export function ccPouAliasname(data) {
-  return request({
-    url: serverUrl + '/manage/cc_api_pou_aliasname',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/cc_api_pou_aliasname',
+      method: 'post',
+      data
+    })
+  } else {
+    return Promise.resolve({data: { valid: 'true' }})
+  }
 }
 
 /** 判断人员名重复接口
@@ -159,11 +202,15 @@ export function ccPouAliasname(data) {
  * uid 人员id
  */
 export function ccPouCnname(data) {
-  return request({
-    url: serverUrl + '/manage/cc_api_pou_cnname',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/cc_api_pou_cnname',
+      method: 'post',
+      data
+    })
+  } else {
+    return Promise.resolve({data: { valid: 'true' }})
+  }
 }
 
 /** 获取统计路径列表
@@ -174,11 +221,15 @@ export function ccPouCnname(data) {
  * page_num 每页项目数
  */
 export function getProUrlList(data) {
-  return request({
-    url: serverUrl + '/manage/getProUrlList',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/getProUrlList',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.getProUrlList({body: data}))
+  }
 }
 
 /** 编辑统计路径
@@ -188,11 +239,15 @@ export function getProUrlList(data) {
  * dealtype 状态 1：不统计2：不统计第一版本3：直接统计
  */
 export function updProUrl(data) {
-  return request({
-    url: serverUrl + '/manage/updProUrl',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/updProUrl',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.updProUrl({body: data}))
+  }
 }
 
 /** 获取每次按人员统计的数据列表接口
@@ -206,11 +261,15 @@ export function updProUrl(data) {
  * end_time 结束时间
  */
 export function getProOperallCbuList(data) {
-  return request({
-    url: serverUrl + '/manage/getProOperallCbuList',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/getProOperallCbuList',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.getProOperallCbuList({body: data}))
+  }
 }
 
 /** 更新人员bug数量
@@ -220,11 +279,15 @@ export function getProOperallCbuList(data) {
  * id 人员id
  */
 export function forv4UpdProOperallCbu(data) {
-  return request({
-    url: serverUrl + '/manage/forv4_updProOperallCbu',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/forv4_updProOperallCbu',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.forv4UpdProOperallCbu({body: data}))
+  }
 }
 
 /** 获取要导出的人员信息
@@ -233,11 +296,15 @@ export function forv4UpdProOperallCbu(data) {
  * addtime 时间
  */
 export function getProOperallCbuListForexcel(data) {
-  return request({
-    url: serverUrl + '/manage/getProOperallCbuListForexcel',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/getProOperallCbuListForexcel',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.getProOperallCbuListForexcel({body: data}))
+  }
 }
 
 /** 获取所有下载文件的路径
@@ -246,11 +313,15 @@ export function getProOperallCbuListForexcel(data) {
  * stataddtime 时间戳
  */
 export function forv4DownSummarizelog(data) {
-  return request({
-    url: serverUrl + '/manage/forv4_down_summarizelog',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/forv4_down_summarizelog',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.forv4DownSummarizelog({body: data}))
+  }
 }
 
 /** 下载统计日志
@@ -276,9 +347,13 @@ export function downloadSummarizelog(data) {
  * compare_type	■■■ 统计类型 current:本月 prev:上月 period:时间段。当传为period时也要传starttime，endtime;不为period时 starttime，endtime不传
  */
 export function forv4Stat(data) {
-  return request({
-    url: serverUrl + '/manage/forv4_stat',
-    method: 'post',
-    data
-  })
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: serverUrl + '/manage/forv4_stat',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(Lines1000Mock.forv4Stat({body: data}))
+  }
 }

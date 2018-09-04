@@ -171,7 +171,7 @@
             }
             res.then(function (value) {
               that.fullscreenLoading = false;
-              if (value && value.status == 200) {
+              if (value.data && value.data.status == 200) {
                 that.$alert('操作成功，点击确定返回列表页', '提示信息', {
                   confirmButtonText: '确定',
                   callback: (action) => {

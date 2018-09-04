@@ -46,26 +46,16 @@
   @import "../../styles/variables";
   @import "../../styles/mixin";
 
-  .cesium-practice {
-    section.page {
-      margin: 0 auto;
-      padding: $appmain-padding;
-    }
-  }
-
-  @media (min-width: #{$responsive-width-xs}) {
-    .cesium-practice {
-      section.page {
-
-      }
-    }
-  }
-
-  @media (min-width: #{$responsive-width-small}) {
-    .cesium-practice {
-      section.page {
-
-      }
+  .cesium {
+    width: 100%;
+    height: 100%;
+    min-width: inherit;
+    min-height: inherit;
+    .cesium-outer {
+      width: inherit;
+      height: inherit;
+      min-width: inherit;
+      min-height: inherit;
     }
   }
 </style>

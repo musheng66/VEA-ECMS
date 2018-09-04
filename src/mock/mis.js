@@ -2,12 +2,12 @@ import { requestParamsToJSON } from '@/utils/ebenUtils'
 
 const deviceType = [
   { id: '1', type: 'T10Test' },
-  { id: '1', type: 'T9Test' },
+  { id: '2', type: 'T9Test' },
 ];
 
 const sysVersion = [
-  { id: '1', version: '195.betaTest' },
-  { id: '2', version: '191.reTest' },
+  { id: '11', version: '195.betaTest' },
+  { id: '12', version: '191.reTest' },
 ];
 
 const statisticsUpgrade = [

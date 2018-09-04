@@ -15,7 +15,9 @@ import i18n from './lang' // Internationalization
 import './icons' // icon
 import './errorLog'// error log
 import './permission' // permission control
+
 // import './mock' // simulation data
+Vue.API_REMOTE = false // api是否使用远程请求，引入mock时设为true即可使用mock模拟
 
 import * as filters from './filters' // global filters
 

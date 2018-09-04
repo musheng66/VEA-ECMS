@@ -263,6 +263,7 @@ export function replaceAll(content, findText, repText) {
  */
 export function requestParamsToJSON(arg) {
   if (!arg || String(arg) === '') return null;
+  if (typeof arg === 'object') return arg;
   const argArr = arg.split('?');
   // 判断是url或者是params
   if (argArr && argArr.length > 1) {

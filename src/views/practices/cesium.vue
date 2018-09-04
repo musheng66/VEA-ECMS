@@ -2,7 +2,7 @@
   <div class="cesium-practice">
     <section class="page">
       <h1>Cesium</h1>
-      <Cesium></Cesium>
+      <Cesium class="cesium-content"></Cesium>
     </section>
   </div>
 </template>
@@ -60,6 +60,10 @@
       padding: $appmain-padding;
       h1 {
         margin-bottom: $appmain-padding;
+      }
+      .cesium-content {
+        width: 100%;
+        height: 500px;
       }
     }
   }

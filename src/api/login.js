@@ -1,48 +1,44 @@
 import request from '@/utils/request'
+import requestLocal from '@/utils/requestLocal'
+import LoginMock from '@/mock/login'
+import _Vue from 'vue'
 
 export function loginByUsername(username, password) {
-  // const data = {
-  //   username: username,
-  //   password: password
-  // }
-  // return request({
-  //   url: '/login/login',
-  //   method: 'post',
-  //   data
-  // })
-  let data = {
-    roles: ['admin'],
-    token: 'admin',
-    introduction: '我是超级管理员',
-    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: '超级管理员',
-    monitor: true,
+  const data = {
+    username: username,
+    password: password
   }
-  return Promise.resolve({data: data})
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: '/login/login',
+      method: 'post',
+      data
+    })
+  } else {
+    return requestLocal(LoginMock.loginByUsername({body: data}))
+  }
 }
 
 export function logout() {
-  // return request({
-  //   url: '/login/logout',
-  //   method: 'post'
-  // })
-  return Promise.resolve()
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: '/login/logout',
+      method: 'post'
+    })
+  } else {
+    return requestLocal(LoginMock.logout())
+  }
 }
 
 export function getUserInfo(token) {
-  // return request({
-  //   url: '/user/info',
-  //   method: 'get',
-  //   params: { token }
-  // })
-  let data = {
-      roles: ['admin'],
-      token: 'admin',
-      introduction: '我是超级管理员',
-      avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-      name: '超级管理员',
-      monitor: true,
-    }
-  return Promise.resolve({data: data})
+  if (_Vue.API_REMOTE) {
+    return request({
+      url: '/user/info',
+      method: 'get',
+      params: {token}
+    })
+  } else {
+    return requestLocal(LoginMock.getUserInfo({url: '/user/info?token=' + token}))
+  }
 }
 

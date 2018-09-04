@@ -53,7 +53,7 @@
 
         let paper = new joint.dia.Paper({
           el: document.getElementById('id-of-jointjs-container'),
-          width: 400,
+          width: '100%',
           height: 400,
           model: graph,
           gridSize: 1
@@ -90,6 +90,10 @@
       margin: 0 auto;
       padding: $appmain-padding;
 
+      #id-of-jointjs-container {
+        width: 100%;
+        height: 400px;
+      }
     }
   }
 
