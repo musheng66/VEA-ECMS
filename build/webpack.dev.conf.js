@@ -64,14 +64,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       path: config.dev.assetsPublicPath + config.dev.assetsSubDirectory
     }),
     // cesium 配置
-    new CopyWebpackPlugin([ { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' } ]),
-    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Assets'), to: 'Assets' } ]),
-    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' } ]),
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, cesiumWorkers), to: 'static/cesium/Workers' } ]),
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Assets'), to: 'static/cesium/Assets' } ]),
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'Widgets'), to: 'static/cesium/Widgets' } ]),
     // 更新，加载kml时候需要这个
-    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'ThirdParty/Workers' } ]),
+    new CopyWebpackPlugin([ { from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'static/cesium/ThirdParty/Workers' } ]),
     new webpack.DefinePlugin({
       // Define relative base path in cesium for loading assets
-      CESIUM_BASE_URL: JSON.stringify('')
+      CESIUM_BASE_URL: JSON.stringify('static/cesium')
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
