@@ -43,6 +43,21 @@
   // import '../../../static/mxgraph/js/Toolbar.js'
   // import '../../../static/mxgraph/js/Dialogs.js'
 
+  // require('../../../static/mxgraph/deflate/pako.min.js')
+  // require('../../../static/mxgraph/deflate/base64.js')
+  // require('../../../static/mxgraph/jscolor/jscolor.js')
+  // require('../../../static/mxgraph/sanitizer/sanitizer.min.js')
+  // require('../../../static/mxgraph/js/Init.js')
+  // require('../../../static/mxgraph/js/Editor.js')
+  // require('../../../static/mxgraph/js/Sidebar.js')
+  // require('../../../static/mxgraph/js/Graph.js')
+  // require('../../../static/mxgraph/js/Format.js')
+  // require('../../../static/mxgraph/js/Shapes.js')
+  // require('../../../static/mxgraph/js/Actions.js')
+  // require('../../../static/mxgraph/js/Menus.js')
+  // require('../../../static/mxgraph/js/Toolbar.js')
+  // require('../../../static/mxgraph/js/Dialogs.js')
+
   export default{
     name: 'mxgraph',
     data () {
