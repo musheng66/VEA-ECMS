@@ -358,6 +358,16 @@ export const asyncRouterMap = [
         },
       },
       {
+        path: 'bpmnjs',
+        name: 'bpmnjs-practices',
+        component: _import('practices/bpmnjs'),
+        meta: {
+          icon: 'bpmnjs',
+          title: 'practices.bpmnjs',
+          roles: ['admin']
+        },
+      },
+      {
         path: 'jointjs',
         name: 'jointjs-practices',
         component: _import('practices/jointjs'),

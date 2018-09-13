@@ -51,9 +51,10 @@ export default {
       base: '基础',
       echart: 'eChart',
       vueComponent: 'VUE组件',
-      mxGraph: 'mxGraph',
       jointjs: 'jointjs',
-      cesium: 'Cesium'
+      cesium: 'Cesium',
+      mxGraph: 'mxGraph',
+      bpmnjs: 'bpmn-js',
     }
 
   },
