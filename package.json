@@ -13,6 +13,7 @@
     "test": "npm run lint"
   },
   "dependencies": {
+    "@drawbotics/mxgraph": "^3.9.6",
     "axios": "0.17.1",
     "cesium": "^1.48.0",
     "clipboard": "1.7.1",

@@ -2,14 +2,19 @@
   <div class="mxgraph-practice">
     <section class="page">
       <h1>mxGraph</h1>
-      <MxGraph></MxGraph>
+      <!--<grapheditor></grapheditor>-->
+    </section>
+    <section class="page">
+      <h1>mxGraph Base</h1>
+      <graphbase></graphbase>
     </section>
   </div>
 </template>
 
 <script>
   import { scrollTop } from '@/utils/ebenUtils'
-  import MxGraph from '@/components/MxGraph'
+  // import grapheditor from '@/components/MxGraph/grapheditor'
+  import graphbase from '@/components/MxGraph/base'
 
   export default{
     name: 'mxGraphPractice',
@@ -40,7 +45,8 @@
     },
 
     components: {
-      MxGraph
+      // grapheditor,
+      graphbase
     },
 
     methods: {
@@ -92,7 +98,7 @@
   .mxgraph-practice {
     section.page {
       .mxgraph-outer {
-        position: absolute;
+        position: relative;
         width: calc(100vw - #{$sidebar-width} - #{$appmain-padding * 4});
         height: 600px;
       }
