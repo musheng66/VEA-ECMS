@@ -55,6 +55,7 @@ export default {
       cesium: 'Cesium',
       mxGraph: 'mxGraph',
       bpmnjs: 'bpmn-js',
+      jsplumb: 'jsplumb',
     }
 
   },

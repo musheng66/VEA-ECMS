@@ -1,18 +1,18 @@
 <template>
-  <div class="bpmnjs-practice">
+  <div class="jsplumb-practice">
     <section class="page">
       <h1>bpmn-js Base</h1>
-      <bpmnjs-base class="bpmnjs-base"></bpmnjs-base>
+      <jsplumb-base class="jsplumb-base"></jsplumb-base>
     </section>
   </div>
 </template>
 
 <script>
   import { scrollTop } from '@/utils/ebenUtils'
-  import bpmnjsBase from '@/components/Bpmnjs/base'
+  import jsplumbBase from '@/components/Jsplumb/base'
 
   export default{
-    name: 'bpmnjsPractice',
+    name: 'jsplumbPractice',
 
     data () {
       return {
@@ -40,7 +40,7 @@
     },
 
     components: {
-      bpmnjsBase
+      jsplumbBase
     },
 
     methods: {
@@ -53,7 +53,7 @@
   @import "../../styles/variables";
   @import "../../styles/mixin";
 
-  .bpmnjs-practice {
+  .jsplumb-practice {
 
     section.page {
       margin: 0 auto;
@@ -66,7 +66,7 @@
 
   @media (min-width: #{$responsive-width-xs}) {
 
-    .bpmnjs-practice {
+    .jsplumb-practice {
 
       section.page {
 
@@ -76,7 +76,7 @@
 
   @media (min-width: #{$responsive-width-small}) {
 
-    .bpmnjs-practice {
+    .jsplumb-practice {
 
       section.page {
 
@@ -89,9 +89,9 @@
   @import "../../styles/variables";
   @import "../../styles/mixin";
 
-  .bpmnjs-practice {
+  .jsplumb-practice {
     section.page {
-      .bpmnjs-base {
+      .jsplumb-base {
         position: relative;
         width: calc(100vw - #{$sidebar-width} - #{$appmain-padding * 4});
         height: 500px;
@@ -100,9 +100,9 @@
   }
 
   .hideSidebar {
-    .bpmnjs-practice {
+    .jsplumb-practice {
       section.page {
-        .bpmnjs-base {
+        .jsplumb-base {
           width: calc(100vw - #{$sidebar-hide-width} - #{$appmain-padding * 4});
         }
       }

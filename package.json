@@ -15,6 +15,7 @@
   "dependencies": {
     "@drawbotics/mxgraph": "^3.9.6",
     "axios": "0.17.1",
+    "bootstrap": "^3.3.7",
     "bpmn-js": "^2.5.1",
     "bpmn-js-properties-panel": "^0.26.2",
     "camunda-bpmn-moddle": "^3.0.0",
@@ -28,6 +29,7 @@
     "font-awesome": "4.7.0",
     "jointjs": "^2.1.4",
     "jquery": "^1.12.4",
+    "jquery-ui": "^1.12.1",
     "js-cookie": "2.2.0",
     "jsonlint": "1.6.2",
     "jszip": "3.1.5",

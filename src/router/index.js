@@ -368,6 +368,16 @@ export const asyncRouterMap = [
         },
       },
       {
+        path: 'jsplumb',
+        name: 'jsplumb-practices',
+        component: _import('practices/jsplumb'),
+        meta: {
+          icon: 'jsplumb',
+          title: 'practices.jsplumb',
+          roles: ['admin']
+        },
+      },
+      {
         path: 'jointjs',
         name: 'jointjs-practices',
         component: _import('practices/jointjs'),
