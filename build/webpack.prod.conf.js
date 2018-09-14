@@ -161,6 +161,12 @@ const webpackConfig = merge(baseWebpackConfig, {
       // 定义 Cesium 从哪里加载资源，如果使用默认的''，却变成了绝对路径了，所以这里使用'./',使用相对路径
       CESIUM_BASE_URL: JSON.stringify('./static/cesium')
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      jquery: "jquery",
+      "window.jQuery": "jquery"
+    })
   ]
 })
 

@@ -46,6 +46,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'jquery': 'jquery',
       'cesium': path.resolve(__dirname, cesiumSource), // Cesium module name
       'cesiumNavi': path.resolve(__dirname,cesiumNavi)
     }
