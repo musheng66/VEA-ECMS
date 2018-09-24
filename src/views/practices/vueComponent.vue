@@ -179,12 +179,15 @@
         if (isNest) {
 
         } else {
-          let template = '<el-row :gutter="10" data-component-active tabIndex="0">' +
-            '  <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1" data-component-active tabIndex="0" style="height: 100px;">栅格col 1</el-col>' +
-            '  <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11" data-component-active tabIndex="0" style="height: 100px;">栅格col 2</el-col>' +
-            '  <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11" data-component-active tabIndex="0" style="height: 100px;">栅格col 3</el-col>' +
-            '  <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1" data-component-active tabIndex="0" style="height: 100px;">栅格col 4</el-col>' +
-            '</el-row>'
+          let template = ''
+          if (info.name === 'Row') {
+            template = '<el-row :gutter="10" data-component-active tabIndex="0">' +
+                      '  <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1" data-component-active tabIndex="0" style="height: 100px;">栅格col 1</el-col>' +
+                      '  <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11" data-component-active tabIndex="0" style="height: 100px;">栅格col 2</el-col>' +
+                      '  <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11" data-component-active tabIndex="0" style="height: 100px;">栅格col 3</el-col>' +
+                      '  <el-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1" data-component-active tabIndex="0" style="height: 100px;">栅格col 4</el-col>' +
+                      '</el-row>'
+          }
           let component = {
             info: info,
             template: template
