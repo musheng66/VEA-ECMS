@@ -3,28 +3,38 @@ const practices = {
 
   state: {
     xAxis: [],
-    series: []
+    series: [],
+    components: [], //预览视图的组件树
   },
 
   mutations: {
-    setXAxisData: (state, data) => {
+    SET_XAXISDATA: (state, data) => {
       // 存入状态
-      state.xAxis = data.xAxis;
+      state.xAxis = data.xAxis
     },
-    setSeriesData: (state, data) => {
-      state.series = data.series;
-    }
-
+    SET_SERIESDATA: (state, data) => {
+      state.series = data.series
+    },
+    SET_COMPONENTS: (state, components) => {
+      state.components = components
+      //保存本地
+      localStorage.components = JSON.stringify(components)
+    },
   },
 
   actions: {
     // 存放购物车数据
     SetEChartData({ commit }, data) {
       // 提交mutations
-      commit('setXAxisData', data);
-      commit('setSeriesData', data);
+      commit('SET_XAXISDATA', data)
+      commit('SET_SERIESDATA', data)
     },
-
+    setComponents({ commit }, components) {
+      commit('SET_COMPONENTS', components)
+    },
+    getComponents({ commit }) {
+      commit('SET_COMPONENTS', localStorage.components ? JSON.parse(localStorage.components) : [])
+    }
   }
 }
 

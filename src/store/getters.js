@@ -17,5 +17,7 @@ const getters = {
 
   xAxis: state => state.practices.xAxis,
   series: state => state.practices.series,
+
+  components: state => state.practices.components,
 };
 export default getters;
