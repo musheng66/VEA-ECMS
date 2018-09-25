@@ -171,6 +171,13 @@
         // console.log(e, 'drag over')
       },
 
+      /*
+        计划对模版数据保存方式进行优化：
+        let components = { name: 'Layout', id: '8zsf898wgr8we3fw', attributes: [], children: [{ name: 'Row', id: '7t4zsdf8gv3hger2h', attributes: [], children: [{ name: 'Col', id: '24swfw4gv832rh2sf', attributes: [] },{ name: 'Col', id: '8sv7we8gh48wef3d', attributes: [] }] }] }
+        针对此格式数据需要设计以下方法：
+        1、将拖动的组件递归插入components指定位置
+        2、根据components从顶层递归生成template
+       */
       drop (e) {
         // console.log(e, 'drop')
         let isNest = e.target.className.indexOf('preview') === -1 && e.target.id !== 'placeholder'
