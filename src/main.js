@@ -2,6 +2,10 @@ import Vue from 'vue'
 
 import 'normalize.css/normalize.css'// A modern alternative to CSS resets
 
+// iView-UI
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -20,6 +24,8 @@ import './permission' // permission control
 Vue.API_REMOTE = false // api是否使用远程请求，引入mock时设为true即可使用mock模拟
 
 import * as filters from './filters' // global filters
+
+Vue.use(iView)
 
 Vue.use(Element, {
   size: 'medium', // set element-ui default size

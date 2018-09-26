@@ -13,7 +13,7 @@
         <!--中部主编辑区-->
         <div class="center">
           <div class="title">预览</div>
-          <div ref="preview" class="preview" @dragover="dragOver" @drop="drop">
+          <div ref="preview" class="preview" @dragover="dragOver" @drop="drop" @click="clickPreview">
             <div v-if="!item.parentId" :id="item.info.id" v-for="(item,index) in components"></div>
           </div>
           <div class="buttons">
@@ -171,12 +171,42 @@
         // console.log(e, 'drag over')
       },
 
+      // 获取最高级节点
+      getComponentNode (node) {
+        if (node && node.getAttribute('data-component-active') !== null) { return node } else {
+          if (node.parentElement) { return this.getComponentNode(node.parentElement) } else { return false }
+        }
+      },
+
+      // 点击选中组件
+      clickPreview (e) {
+        // debugger;
+        let target = e.target
+        e.preventDefault()
+        let componentHTML = this.getComponentNode(target)
+        if (componentHTML) {
+          // 添加选中效果
+          let list = document.querySelectorAll('[data-component-active="true"]')
+          list.forEach(el => {
+            el.setAttribute('data-component-active', '')
+          })
+          componentHTML.setAttribute('data-component-active', 'true')
+          // 保存当前选中的组件
+          let currentId = componentHTML.id
+
+
+
+        }
+      },
       /*
         计划对模版数据保存方式进行优化：
-        let components = { name: 'Layout', id: '8zsf898wgr8we3fw', attributes: [], children: [{ name: 'Row', id: '7t4zsdf8gv3hger2h', attributes: [], children: [{ name: 'Col', id: '24swfw4gv832rh2sf', attributes: [] },{ name: 'Col', id: '8sv7we8gh48wef3d', attributes: [] }] }] }
+        layouts 保存已拖拽生成的布局 { name: 'Layout', id: '8zsf898wgr8we3fw', attributes: [], children: [{ name: 'Row', id: '7t4zsdf8gv3hger2h', attributes: [], children: [{ name: 'Col', id: '24swfw4gv832rh2sf', attributes: [] },{ name: 'Col', id: '8sv7we8gh48wef3d', attributes: [] }] }] }
+        current 保存当前选中的组件信息 { id: '8zsf898wgr8we3fw' }
+        template 保存当前生成的页面模板，为 Vue 挂载做准备
         针对此格式数据需要设计以下方法：
-        1、将拖动的组件递归插入components指定位置
-        2、根据components从顶层递归生成template
+        1.将拖动的组件递归插入 layouts 指定位置
+        2.根据 layouts 从顶层递归生成template
+        3.根据组件 id 在 layouts 数据中设置对应的属性
        */
       drop (e) {
         // console.log(e, 'drop')
@@ -284,12 +314,12 @@
         }, 0)
       },
 
-      //给定模板，和要挂载的元素id，挂载组件
+      // 给定模板，和要挂载的元素id，挂载组件
       mount (id, _component) {
         let components = this.components
         let component = components.find(c => c.info.id === id)
         return new Promise((resolve, reject) => {
-          //需要延迟才能取到document.getElementById(id)
+          // 需要延迟才能取到 document.getElementById(id)
           setTimeout(() => {
             let data={}
             if (_component.attributes) {
@@ -310,7 +340,7 @@
                 if (component) {
                   component.uid = this._uid
                 }
-                //添加选中效果
+                // 添加选中效果
                 // let info = this.currentComponent.info
                 // if (!info) this.$el.click()
               }
