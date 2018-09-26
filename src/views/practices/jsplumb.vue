@@ -1,7 +1,7 @@
 <template>
   <div class="jsplumb-practice">
     <section class="page">
-      <h1>bpmn-js Base</h1>
+      <h1>jsplumb Base</h1>
       <jsplumb-base class="jsplumb-base"></jsplumb-base>
     </section>
   </div>
