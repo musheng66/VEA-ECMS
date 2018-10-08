@@ -348,6 +348,16 @@ export const asyncRouterMap = [
         },
       },
       {
+        path: 'amap',
+        name: 'amap-practices',
+        component: _import('practices/amap'),
+        meta: {
+          icon: 'amap',
+          title: 'practices.amap',
+          roles: ['admin']
+        },
+      },
+      {
         path: 'mxGraph',
         name: 'mxgraph-practices',
         component: _import('practices/mxGraph'),

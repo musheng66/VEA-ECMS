@@ -56,6 +56,7 @@ export default {
       mxGraph: 'mxGraph',
       bpmnjs: 'bpmn-js',
       jsplumb: 'jsplumb',
+      amap: '高德地图API'
     }
 
   },
