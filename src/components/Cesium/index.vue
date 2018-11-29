@@ -7,8 +7,11 @@
   import Cesium from 'cesium/Cesium'
   import widgets from 'cesium/Widgets/widgets.css'
   window.Cesium = Cesium
-  require('../../../static/cesium-mars/mars3d')
-  require('../../../static/cesium-mars/mars3d.css')
+  // 引入 cesium-mar，需先加载 Cesium
+  if (window.Cesium) {
+    import('../../../static/cesium-mars/mars3d')
+    import('../../../static/cesium-mars/mars3d.css')
+  }
   export default{
     name: 'cesium',
     data () {
