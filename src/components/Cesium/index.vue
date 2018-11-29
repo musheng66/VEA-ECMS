@@ -6,6 +6,9 @@
 <script>
   import Cesium from 'cesium/Cesium'
   import widgets from 'cesium/Widgets/widgets.css'
+  window.Cesium = Cesium
+  require('../../../static/cesium-mars/mars3d')
+  require('../../../static/cesium-mars/mars3d.css')
   export default{
     name: 'cesium',
     data () {
